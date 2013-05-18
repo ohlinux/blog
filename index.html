@@ -1,88 +1,149 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-    <title>OhLinux Markdown Blog by ohlinux</title>
-  </head>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>OhLinux Markdown Blog</h1>
-        <h2>markdown wiki formart blog ,record and study . </h2>
-        <a href="https://github.com/ohlinux/blog" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>Welcome to GitHub Pages.</h3>
+<link rel="stylesheet" href="/style.css" type="text/css" />
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<!--Baidu tongji-->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcb5b32b959ab6deadbf7373854572a73' type='text/javascript'%3E%3C/script%3E"));
+</script> <!--Baidu tongji-->
 
-<h3>Designer Templates</h3>
+<!--SyntaxHighlighter-->
+<script type="text/javascript" src="/scripts/shCore.js"></script>
+<script type="text/javascript" src="/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJava.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shCoreFadeToGrey.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+</head>
 
-<h3>Rather Drive Stick?</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<body>
+<div id="wrapper">
 
-<h3>Authors and Contributors</h3>
+<div id="header">
+    <p class="header_titleline">Mike的分享空间</p>
+    <p class="header_subline"><a href="/index.html">首页</a></p>
+</div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-<h3>Support or Contact</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+ <!--if(title)-->
 
-        <aside id="sidebar">
-          <a href="https://github.com/ohlinux/blog/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/ohlinux/blog/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#数字影音">数字影音</a><ul>
+<li><a href="#基础知识">基础知识</a></li>
+<li><a href="#音视频编解码与容器">音视频编解码与容器</a></li>
+<li><a href="#音视频框架">音视频框架</a></li>
+</ul></li>
+<li><a href="#linux">Linux</a><ul>
+<li><a href="#安装配置与使用">安装配置与使用</a></li>
+<li><a href="#开发">开发</a></li>
+</ul></li>
+<li><a href="#网络">网络</a><ul>
+<li><a href="#协议">协议</a></li>
+<li><a href="#开发-1">开发</a></li>
+</ul></li>
+<li><a href="#android">Android</a><ul>
+<li><a href="#基础知识-1">基础知识</a></li>
+<li><a href="#android应用开发">Android应用开发</a></li>
+<li><a href="#android中间层开发">Android中间层开发</a></li>
+<li><a href="#android底层开发">Android底层开发</a></li>
+</ul></li>
+<li><a href="#工具使用">工具使用</a><ul>
+<li><a href="#版本管理">版本管理</a></li>
+<li><a href="#程序开发">程序开发</a></li>
+<li><a href="#网络-1">网络</a></li>
+<li><a href="#网站建设">网站建设</a></li>
+</ul></li>
+<li><a href="#软件开发">软件开发</a><ul>
+<li><a href="#编程语言">编程语言</a></li>
+</ul></li>
+</ul>
+</div>
+ <!--if(toc)-->
 
-          <p class="repo-owner"><a href="https://github.com/ohlinux/blog"></a> is maintained by <a href="https://github.com/ohlinux">ohlinux</a>.</p>
+<!---title:Mike的分享空间-首页-->
+<!---keywords:Linux,Android,网络,数字音视频,编程-->
 
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+<h2 id="数字影音"><a href="#数字影音">数字影音</a></h2>
+<h3 id="基础知识"><a href="#基础知识">基础知识</a></h3>
+<p>尚未整理</p>
+<h3 id="音视频编解码与容器"><a href="#音视频编解码与容器">音视频编解码与容器</a></h3>
+<!-- wiki/dtv/codec/avbasic.mkd -->
+<p><a href="wiki/dtv/codec/avbasic.html">数字音视频基础</a></p>
+<!-- wiki/dtv/codec/mpeg2.mkd -->
+<p><a href="wiki/dtv/codec/mpeg2.html">mpeg2</a></p>
+<h3 id="音视频框架"><a href="#音视频框架">音视频框架</a></h3>
+<p>尚未整理</p>
+<h2 id="linux"><a href="#linux">Linux</a></h2>
+<h3 id="安装配置与使用"><a href="#安装配置与使用">安装配置与使用</a></h3>
+<p><a href="wiki/linux/usage/netconfig.html">Linux网络配置</a></p>
+<p><a href="wiki/linux/usage/samba.html">Linux samba配置</a></p>
+<p><a href="wiki/linux/usage/tftp.html">Linux tftp配置</a></p>
+<h3 id="开发"><a href="#开发">开发</a></h3>
+<p>尚未整理</p>
+<h2 id="网络"><a href="#网络">网络</a></h2>
+<h3 id="协议"><a href="#协议">协议</a></h3>
+<p><a href="wiki/net/protocol/zoomtable.html">tcp/ip协议速查</a></p>
+<p><a href="wiki/net/protocol/http.html">http</a></p>
+<p><a href="wiki/net/protocol/rtsp.html">rtsp</a></p>
+<p><a href="wiki/net/protocol/rtp.html">rtp</a></p>
+<h3 id="开发-1"><a href="#开发-1">开发</a></h3>
+<p>尚未整理</p>
+<h2 id="android"><a href="#android">Android</a></h2>
+<h3 id="基础知识-1"><a href="#基础知识-1">基础知识</a></h3>
+<p><a href="wiki/android/basic/intro.html">Android简介</a></p>
+<p>Android开发环境搭建(尚未整理)</p>
+<p><a href="wiki/android/basic/compiledebug.html">Android编译与调试</a></p>
+<h3 id="android应用开发"><a href="#android应用开发">Android应用开发</a></h3>
+<p>尚未整理</p>
+<h3 id="android中间层开发"><a href="#android中间层开发">Android中间层开发</a></h3>
+<p>尚未整理</p>
+<h3 id="android底层开发"><a href="#android底层开发">Android底层开发</a></h3>
+<p>尚未整理</p>
+<h2 id="工具使用"><a href="#工具使用">工具使用</a></h2>
+<h3 id="版本管理"><a href="#版本管理">版本管理</a></h3>
+<p><a href="wiki/tool/versionmanage/git.html">git</a></p>
+<h3 id="程序开发"><a href="#程序开发">程序开发</a></h3>
+<p><a href="wiki/tool/sw_develop/eclipse_cpp.html">Eclipse C++</a></p>
+<p><a href="wiki/tool/sw_develop/uml_class.html">uml类图</a></p>
+<!-- wiki/tool/sw_develop/vim.mkd -->
+<p><a href="wiki/tool/sw_develop/vim.html">vim配置与使用</a></p>
+<h3 id="网络-1"><a href="#网络-1">网络</a></h3>
+<p><a href="wiki/tool/net/wireshark.html">使用Wireshark抓包教程</a></p>
+<h3 id="网站建设"><a href="#网站建设">网站建设</a></h3>
+<!-- wiki/tool/sitebuild/mikewiki.mkd -->
+<p><a href="wiki/tool/sitebuild/mikewiki.html">用markdown + pandoc + makefile + git(github)搭建wiki</a></p>
+<!-- wiki/tool/sitebuild/markdown_syntax.mkd -->
+<p><a href="wiki/tool/sitebuild/markdown_syntax.html">markdown语法速查</a></p>
+<!-- wiki/tool/sitebuild/github_sshkey.mkd -->
+<p><a href="wiki/tool/sitebuild/github_sshkey.html">github免输入密码</a></p>
+<h2 id="软件开发"><a href="#软件开发">软件开发</a></h2>
+<h3 id="编程语言"><a href="#编程语言">编程语言</a></h3>
+<p><a href="wiki/sw_develop/language/shell.html">shell脚本速查</a></p>
+<!-- vim:set tw=0:-->
 
-            <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("ohlinux");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
 
-  </body>
+<div id="footer">
+    <p class="footer_titleline">Human knowledge belongs to the world</p>
+    <p class="footer_subline">Contact: wytabc@126.com</p>
+    <p class="footer_subline">声明: 本站如有侵权行为请及时通知至以上邮箱</p>
+</div>
+</div> <!--wrapper-->
+</body>
 </html>

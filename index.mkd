@@ -1,0 +1,120 @@
+<!---title:Mike的分享空间-首页-->
+<!---keywords:Linux,Android,网络,数字音视频,编程-->
+
+##数字影音 
+
+###基础知识
+
+尚未整理
+
+###音视频编解码与容器
+
+<!-- wiki/dtv/codec/avbasic.mkd -->
+[数字音视频基础](wiki/dtv/codec/avbasic.html)
+
+<!-- wiki/dtv/codec/mpeg2.mkd -->
+[mpeg2](wiki/dtv/codec/mpeg2.html)
+
+###音视频框架
+
+尚未整理
+
+
+
+##Linux 
+
+###安装配置与使用
+
+[Linux网络配置](wiki/linux/usage/netconfig.html)
+
+[Linux samba配置](wiki/linux/usage/samba.html)
+
+[Linux tftp配置](wiki/linux/usage/tftp.html)
+
+###开发
+
+尚未整理
+
+
+
+##网络 
+
+###协议
+
+[tcp/ip协议速查](wiki/net/protocol/zoomtable.html)
+
+[http](wiki/net/protocol/http.html)
+
+[rtsp](wiki/net/protocol/rtsp.html)
+
+[rtp](wiki/net/protocol/rtp.html)
+
+###开发
+
+尚未整理
+
+
+
+##Android 
+
+###基础知识
+
+[Android简介](wiki/android/basic/intro.html)
+
+Android开发环境搭建(尚未整理)
+
+[Android编译与调试](wiki/android/basic/compiledebug.html)
+
+###Android应用开发
+
+尚未整理
+
+###Android中间层开发
+
+尚未整理
+
+###Android底层开发
+
+尚未整理
+
+
+##工具使用 
+
+###版本管理
+
+[git](wiki/tool/versionmanage/git.html)
+
+###程序开发
+
+[Eclipse C++](wiki/tool/sw_develop/eclipse_cpp.html)
+
+[uml类图](wiki/tool/sw_develop/uml_class.html)
+
+<!-- wiki/tool/sw_develop/vim.mkd -->
+[vim配置与使用](wiki/tool/sw_develop/vim.html)
+
+###网络
+
+[使用Wireshark抓包教程](wiki/tool/net/wireshark.html)
+
+###网站建设
+
+<!-- wiki/tool/sitebuild/mikewiki.mkd -->
+[用markdown + pandoc + makefile + git(github)搭建wiki](wiki/tool/sitebuild/mikewiki.html)
+
+<!-- wiki/tool/sitebuild/markdown_syntax.mkd -->
+[markdown语法速查](wiki/tool/sitebuild/markdown_syntax.html)
+
+<!-- wiki/tool/sitebuild/github_sshkey.mkd -->
+[github免输入密码](wiki/tool/sitebuild/github_sshkey.html)
+
+
+
+##软件开发
+
+###编程语言
+
+[shell脚本速查](wiki/sw_develop/language/shell.html)
+
+
+<!-- vim:set tw=0:-->

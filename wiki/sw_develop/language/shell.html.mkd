@@ -1,0 +1,276 @@
+<!---title:shell脚本速查-->
+<!---keywords:linux,script,使用,教程,笔记,数组,分支,循环,函数-->
+
+
+##变量
+
+var="hello"
+
+###特殊变量
+
+* $#: 命令行上的参数个数(不包括命令本身).
+* $?: 上一条命令执行后的返回值.
+* \$\$: 当前进程的进程号. 可用于生成唯一的临时文件名: temp=/usr/tmp/$$
+* $!: 上一个后台命令对应的进程号.
+* $-: 由当前shell设置的执行标志名组成的字符串(即命令行选项的出'-'之外的部分).
+* $\*: 命令行中实际给出的所有实参字符串, 不仅限于9个.
+* $@: 与$\*基本功能相同. \$\*将所有参数串成一个串, 而$@将其分成多个串.
+
+
+
+##数组
+
+###声明
+
+    declare -a myarray # myarray被当作数组名
+
+bash中可以不声明, 直接定义.
+
+###定义
+
+**第1种方式**: 数组元素内部没有空格
+
+    myarray=( value1 value2 value3 ... )
+    或:
+    myarray="one two three"
+
+**第2种方式**: 数组元素内部包含空格
+
+    cmds[0]="git checkout master"
+    cmds[1]="git pull"
+
+###访问
+
+    myarray[key]      # 访问单个数组元素. 例如: cmds[1]
+    ${myarray[*]}     # 访问所有元素
+
+###删除
+
+    unset myarray[1]  # 删除数组中第一个元素
+    unset myarray     # 删除整个数组
+
+###计算数组长度
+
+    ${#myarray[*]}    # 获取数组长度(元素总个数).
+    ${#myarray[@]}    # 获取数组长度(元素总个数).
+    ${#myarray[0]}    # 获取元素0的长度.
+
+###数组截取
+
+    ${myarray[*]:1}   # 截取: 从下标为1的元素到最后一个
+    ${myarray[*]:2:3} # 截取: 从下标为2(含2)的元素开始, 截取3个元素
+
+###子串删除与替换
+
+会将所有的元素中的匹配到的子串删除/替换.
+
+    array=("zero" "one" "two" "three" "four" "soho")
+
+    #删除:
+    echo ${array[@]#t*e}   # 从字符串的起始开始最短匹配: "t*e", 这将匹配到"thre". 将显示: zero one two e four soho
+    echo ${array[@]##t*e}  # 从字符串的起始开始最长匹配, 这将匹配到"three". 将显示: zero one two four soho
+    echo ${array[@]%o*}    # 从字符串的结尾开始最短匹配. 将显示: zer tw three f soh
+    echo ${array[@]%%o*}   # 从字符串的结尾开始最长匹配. 将显示: zer tw three f s
+
+    #替换:
+    echo ${array[@]/e/+}   # 从字符串的任意位置开始最短的匹配并替换. 将显示: z+ro on+ two thr+e four soho
+    echo ${array[@]//e/+}  # 从字符串的任意位置开始最长的匹配并替换. 将显示: z+ro on+ two thr++ four soho
+    echo ${array[@]/#o/+}  # 从字符串的起始开始匹配并替换. 将显示: zero +ne two three four soho
+    echo ${array[@]/%o/+}  # 从字符串的结尾开始匹配并替换. 将显示: zer+ one tw+ three four soh+
+
+
+
+##条件测试
+
+###文件
+
+      1] -r file      : 可读为真
+      2] -w file      : 可写为真
+      3] -x file      : 可执行为真
+      4] -f file      : 存在且是普通文件为真
+      5] -d file      : 存在且是目录文件为真
+      6] -p file      : 存在且是命名的FIFO文件为真
+      7] -b file      : 存在且是块设备文件为真
+      8] -c file      : 存在且是字符设备文件为真
+      9] -s file      : 存在且长度>0为真
+      10]-t 文件描述字: 文件打开且其文件描述字是与终端设备相关的为真. 默认的"文件描述字"是1.
+
+###字符串
+
+      1] -z s1   : 长度为0为真
+      2] -n s1   : 长度>0为真
+      3] s1      : 不是空串则为真
+      4] s1 = s2 : 串相等为真
+      5] s1 != s2: 串不等为真
+      6] s1 <  s2: 字典顺序s1在s2前为真
+      7] s1 >  s2: 字典顺序s1在s2后为真
+
+###数值
+
+      1] n1 -eq n2: 等于为真
+      2] n1 -ne n2: 不等为真
+      3] n1 -lt n2: 小于为真
+      4] n1 -le n2: 小于等于为真
+      5] n1 -gt n2: 大于为真
+      6] n1 -ge n2: 大于等于为真
+
+###逻辑运算符
+
+      1] !: 逻辑非
+      2] -a: 逻辑与
+      3] -o: 逻辑或
+
+###特殊条件测试
+
+      1] :: 不做任何事, 退出值为0(真).
+      2] true: 总为真, 退出值为0.
+      3] false: 总为假, 退出值为255.
+
+##分支与循环
+
+###if
+
+    if 条件; then
+        cmd1
+    else
+        cmd2
+    fi
+
+###case
+
+    case 字符串 in
+        模式1) cmd1
+            ;;
+        模式2) cmd2
+            ;;
+    esac
+
+###while
+
+    while 测试条件
+        cmd
+    done
+
+可以使用break
+
+###until
+
+    until 测试条件
+    do
+        命令表
+    done
+
+###for
+
+    for 变量 [in 值表]
+    do
+        cmd
+    done
+
+
+
+##shell输入与输出
+
+###echo
+
+选项:
+
+    -e: 翻译反斜杠'\'的转意.
+    -E: 不翻译反斜杠'\'的转意.
+
+-e的转意:
+
+    \c: 不换行.
+    \n: 换行.
+    \r: 回车.
+    \t: tab.
+    \v: 纵向tab(不回车的换行).
+
+###read
+
+用法: read var1 var2 (以空格为分隔, 回车为结束)
+
+如果不能一一对应, 多余的全部给最后一个变量.
+
+###cat
+
+用法1: 显示
+
+    cat file1
+    cat file1 | more
+    cat -v file1 #(显示控制字符)
+
+用法2: 合并文本文件
+
+    cat file1 file2 > file_tar
+
+用法3: 简单文本录入器
+
+    cat > file1 #(键盘读入字段, 输入到file1, 以<Ctrl+D>结束)
+
+###标准输入, 输出, 错误输出
+
+标准输入, 输出, 错误输出分别为0, 1, 2
+
+    cmd > file1 2>&1 # 标准输出和标准错误一起重定向.
+    cmd > /dev/null  # 重定向到垃圾箱
+    cat file1.txt file2.txt 1>file3.out 2>file4.err # 标准输出和标准错误一起使用.
+
+###tee
+
+把输出的一个副本输送到标准输出, 另一个副本拷贝到相应的文件中.
+
+选项: -a: 追加.
+
+###管道
+
+    time=`date|awk '{print $5}'|sed -e 's/://g'`
+    并且awk和sed一次完成不了的, 可以分多次一直管道, 直到完成.
+
+
+##算术运算
+
+    time_b=`expr ${time} + 1`
+
+
+
+
+
+
+##常用命令与语句
+
+###exit
+
+    exit [n]  : n缺省则为最后一条命令的退出值.
+
+###select
+
+    select id [in word ...]
+    do
+        cmd
+    done
+
+###sort
+
+说明: 一般处理类似表格的文本文件. 将其一列一列的进行分类, 切割, 合并等.
+
+选项:
+
+    -c: 测试是否已经分类.
+    -m: 合并两个分类的文件.
+    -u: 省略重复行.
+    -o file1: 将结果存入file1.
+    -b: 忽略前导空白.
+    -n: 按数字分类. 如: 123比89大.
+    -t: 制定分隔符.
+    -r: 逆序排列.
+    -ki: i指示第i域开始分类. i从1开始数.
+
+
+
+##参考资料
+
+[http://bbs.chinaunix.net/thread-1779167-1-1.html](http://bbs.chinaunix.net/thread-1779167-1-1.html)
+
+
+<!-- vim:set tw=0:-->

@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<link rel="stylesheet" href="/style.css" type="text/css" />
+
+
+
+<!--Baidu tongji-->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcb5b32b959ab6deadbf7373854572a73' type='text/javascript'%3E%3C/script%3E"));
+</script> <!--Baidu tongji-->
+
+<!--SyntaxHighlighter-->
+<script type="text/javascript" src="/scripts/shCore.js"></script>
+<script type="text/javascript" src="/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJava.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shCoreFadeToGrey.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+    <p class="header_titleline">Mike的分享空间</p>
+    <p class="header_subline"><a href="/index.html">首页</a></p>
+</div>
+
+
+
+ <!--if(title)-->
+
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#变量">变量</a><ul>
+<li><a href="#特殊变量">特殊变量</a></li>
+</ul></li>
+<li><a href="#数组">数组</a><ul>
+<li><a href="#声明">声明</a></li>
+<li><a href="#定义">定义</a></li>
+<li><a href="#访问">访问</a></li>
+<li><a href="#删除">删除</a></li>
+<li><a href="#计算数组长度">计算数组长度</a></li>
+<li><a href="#数组截取">数组截取</a></li>
+<li><a href="#子串删除与替换">子串删除与替换</a></li>
+</ul></li>
+<li><a href="#条件测试">条件测试</a><ul>
+<li><a href="#文件">文件</a></li>
+<li><a href="#字符串">字符串</a></li>
+<li><a href="#数值">数值</a></li>
+<li><a href="#逻辑运算符">逻辑运算符</a></li>
+<li><a href="#特殊条件测试">特殊条件测试</a></li>
+</ul></li>
+<li><a href="#分支与循环">分支与循环</a><ul>
+<li><a href="#if">if</a></li>
+<li><a href="#case">case</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#until">until</a></li>
+<li><a href="#for">for</a></li>
+</ul></li>
+<li><a href="#shell输入与输出">shell输入与输出</a><ul>
+<li><a href="#echo">echo</a></li>
+<li><a href="#read">read</a></li>
+<li><a href="#cat">cat</a></li>
+<li><a href="#标准输入-输出-错误输出">标准输入, 输出, 错误输出</a></li>
+<li><a href="#tee">tee</a></li>
+<li><a href="#管道">管道</a></li>
+</ul></li>
+<li><a href="#算术运算">算术运算</a></li>
+<li><a href="#常用命令与语句">常用命令与语句</a><ul>
+<li><a href="#exit">exit</a></li>
+<li><a href="#select">select</a></li>
+<li><a href="#sort">sort</a></li>
+</ul></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul>
+</div>
+ <!--if(toc)-->
+
+<!---title:shell脚本速查-->
+<!---keywords:linux,script,使用,教程,笔记,数组,分支,循环,函数-->
+
+
+<h2 id="变量"><a href="#变量">变量</a></h2>
+<p>var=&quot;hello&quot;</p>
+<h3 id="特殊变量"><a href="#特殊变量">特殊变量</a></h3>
+<ul>
+<li>$#: 命令行上的参数个数(不包括命令本身).</li>
+<li>$?: 上一条命令执行后的返回值.</li>
+<li>$$: 当前进程的进程号. 可用于生成唯一的临时文件名: temp=/usr/tmp/$$</li>
+<li>$!: 上一个后台命令对应的进程号.</li>
+<li>$-: 由当前shell设置的执行标志名组成的字符串(即命令行选项的出'-'之外的部分).</li>
+<li>$*: 命令行中实际给出的所有实参字符串, 不仅限于9个.</li>
+<li><span class="math">$@: 与$</span>*基本功能相同. $*将所有参数串成一个串, 而$@将其分成多个串.</li>
+</ul>
+<h2 id="数组"><a href="#数组">数组</a></h2>
+<h3 id="声明"><a href="#声明">声明</a></h3>
+<pre><code>declare -a myarray # myarray被当作数组名</code></pre>
+<p>bash中可以不声明, 直接定义.</p>
+<h3 id="定义"><a href="#定义">定义</a></h3>
+<p><strong>第1种方式</strong>: 数组元素内部没有空格</p>
+<pre><code>myarray=( value1 value2 value3 ... )
+或:
+myarray=&quot;one two three&quot;</code></pre>
+<p><strong>第2种方式</strong>: 数组元素内部包含空格</p>
+<pre><code>cmds[0]=&quot;git checkout master&quot;
+cmds[1]=&quot;git pull&quot;</code></pre>
+<h3 id="访问"><a href="#访问">访问</a></h3>
+<pre><code>myarray[key]      # 访问单个数组元素. 例如: cmds[1]
+${myarray[*]}     # 访问所有元素</code></pre>
+<h3 id="删除"><a href="#删除">删除</a></h3>
+<pre><code>unset myarray[1]  # 删除数组中第一个元素
+unset myarray     # 删除整个数组</code></pre>
+<h3 id="计算数组长度"><a href="#计算数组长度">计算数组长度</a></h3>
+<pre><code>${#myarray[*]}    # 获取数组长度(元素总个数).
+${#myarray[@]}    # 获取数组长度(元素总个数).
+${#myarray[0]}    # 获取元素0的长度.</code></pre>
+<h3 id="数组截取"><a href="#数组截取">数组截取</a></h3>
+<pre><code>${myarray[*]:1}   # 截取: 从下标为1的元素到最后一个
+${myarray[*]:2:3} # 截取: 从下标为2(含2)的元素开始, 截取3个元素</code></pre>
+<h3 id="子串删除与替换"><a href="#子串删除与替换">子串删除与替换</a></h3>
+<p>会将所有的元素中的匹配到的子串删除/替换.</p>
+<pre><code>array=(&quot;zero&quot; &quot;one&quot; &quot;two&quot; &quot;three&quot; &quot;four&quot; &quot;soho&quot;)
+
+#删除:
+echo ${array[@]#t*e}   # 从字符串的起始开始最短匹配: &quot;t*e&quot;, 这将匹配到&quot;thre&quot;. 将显示: zero one two e four soho
+echo ${array[@]##t*e}  # 从字符串的起始开始最长匹配, 这将匹配到&quot;three&quot;. 将显示: zero one two four soho
+echo ${array[@]%o*}    # 从字符串的结尾开始最短匹配. 将显示: zer tw three f soh
+echo ${array[@]%%o*}   # 从字符串的结尾开始最长匹配. 将显示: zer tw three f s
+
+#替换:
+echo ${array[@]/e/+}   # 从字符串的任意位置开始最短的匹配并替换. 将显示: z+ro on+ two thr+e four soho
+echo ${array[@]//e/+}  # 从字符串的任意位置开始最长的匹配并替换. 将显示: z+ro on+ two thr++ four soho
+echo ${array[@]/#o/+}  # 从字符串的起始开始匹配并替换. 将显示: zero +ne two three four soho
+echo ${array[@]/%o/+}  # 从字符串的结尾开始匹配并替换. 将显示: zer+ one tw+ three four soh+</code></pre>
+<h2 id="条件测试"><a href="#条件测试">条件测试</a></h2>
+<h3 id="文件"><a href="#文件">文件</a></h3>
+<pre><code>  1] -r file      : 可读为真
+  2] -w file      : 可写为真
+  3] -x file      : 可执行为真
+  4] -f file      : 存在且是普通文件为真
+  5] -d file      : 存在且是目录文件为真
+  6] -p file      : 存在且是命名的FIFO文件为真
+  7] -b file      : 存在且是块设备文件为真
+  8] -c file      : 存在且是字符设备文件为真
+  9] -s file      : 存在且长度&gt;0为真
+  10]-t 文件描述字: 文件打开且其文件描述字是与终端设备相关的为真. 默认的&quot;文件描述字&quot;是1.</code></pre>
+<h3 id="字符串"><a href="#字符串">字符串</a></h3>
+<pre><code>  1] -z s1   : 长度为0为真
+  2] -n s1   : 长度&gt;0为真
+  3] s1      : 不是空串则为真
+  4] s1 = s2 : 串相等为真
+  5] s1 != s2: 串不等为真
+  6] s1 &lt;  s2: 字典顺序s1在s2前为真
+  7] s1 &gt;  s2: 字典顺序s1在s2后为真</code></pre>
+<h3 id="数值"><a href="#数值">数值</a></h3>
+<pre><code>  1] n1 -eq n2: 等于为真
+  2] n1 -ne n2: 不等为真
+  3] n1 -lt n2: 小于为真
+  4] n1 -le n2: 小于等于为真
+  5] n1 -gt n2: 大于为真
+  6] n1 -ge n2: 大于等于为真</code></pre>
+<h3 id="逻辑运算符"><a href="#逻辑运算符">逻辑运算符</a></h3>
+<pre><code>  1] !: 逻辑非
+  2] -a: 逻辑与
+  3] -o: 逻辑或</code></pre>
+<h3 id="特殊条件测试"><a href="#特殊条件测试">特殊条件测试</a></h3>
+<pre><code>  1] :: 不做任何事, 退出值为0(真).
+  2] true: 总为真, 退出值为0.
+  3] false: 总为假, 退出值为255.</code></pre>
+<h2 id="分支与循环"><a href="#分支与循环">分支与循环</a></h2>
+<h3 id="if"><a href="#if">if</a></h3>
+<pre><code>if 条件; then
+    cmd1
+else
+    cmd2
+fi</code></pre>
+<h3 id="case"><a href="#case">case</a></h3>
+<pre><code>case 字符串 in
+    模式1) cmd1
+        ;;
+    模式2) cmd2
+        ;;
+esac</code></pre>
+<h3 id="while"><a href="#while">while</a></h3>
+<pre><code>while 测试条件
+    cmd
+done</code></pre>
+<p>可以使用break</p>
+<h3 id="until"><a href="#until">until</a></h3>
+<pre><code>until 测试条件
+do
+    命令表
+done</code></pre>
+<h3 id="for"><a href="#for">for</a></h3>
+<pre><code>for 变量 [in 值表]
+do
+    cmd
+done</code></pre>
+<h2 id="shell输入与输出"><a href="#shell输入与输出">shell输入与输出</a></h2>
+<h3 id="echo"><a href="#echo">echo</a></h3>
+<p>选项:</p>
+<pre><code>-e: 翻译反斜杠&#39;\&#39;的转意.
+-E: 不翻译反斜杠&#39;\&#39;的转意.</code></pre>
+<p>-e的转意:</p>
+<pre><code>\c: 不换行.
+\n: 换行.
+\r: 回车.
+\t: tab.
+\v: 纵向tab(不回车的换行).</code></pre>
+<h3 id="read"><a href="#read">read</a></h3>
+<p>用法: read var1 var2 (以空格为分隔, 回车为结束)</p>
+<p>如果不能一一对应, 多余的全部给最后一个变量.</p>
+<h3 id="cat"><a href="#cat">cat</a></h3>
+<p>用法1: 显示</p>
+<pre><code>cat file1
+cat file1 | more
+cat -v file1 #(显示控制字符)</code></pre>
+<p>用法2: 合并文本文件</p>
+<pre><code>cat file1 file2 &gt; file_tar</code></pre>
+<p>用法3: 简单文本录入器</p>
+<pre><code>cat &gt; file1 #(键盘读入字段, 输入到file1, 以&lt;Ctrl+D&gt;结束)</code></pre>
+<h3 id="标准输入-输出-错误输出"><a href="#标准输入-输出-错误输出">标准输入, 输出, 错误输出</a></h3>
+<p>标准输入, 输出, 错误输出分别为0, 1, 2</p>
+<pre><code>cmd &gt; file1 2&gt;&amp;1 # 标准输出和标准错误一起重定向.
+cmd &gt; /dev/null  # 重定向到垃圾箱
+cat file1.txt file2.txt 1&gt;file3.out 2&gt;file4.err # 标准输出和标准错误一起使用.</code></pre>
+<h3 id="tee"><a href="#tee">tee</a></h3>
+<p>把输出的一个副本输送到标准输出, 另一个副本拷贝到相应的文件中.</p>
+<p>选项: -a: 追加.</p>
+<h3 id="管道"><a href="#管道">管道</a></h3>
+<pre><code>time=`date|awk &#39;{print $5}&#39;|sed -e &#39;s/://g&#39;`
+并且awk和sed一次完成不了的, 可以分多次一直管道, 直到完成.</code></pre>
+<h2 id="算术运算"><a href="#算术运算">算术运算</a></h2>
+<pre><code>time_b=`expr ${time} + 1`</code></pre>
+<h2 id="常用命令与语句"><a href="#常用命令与语句">常用命令与语句</a></h2>
+<h3 id="exit"><a href="#exit">exit</a></h3>
+<pre><code>exit [n]  : n缺省则为最后一条命令的退出值.</code></pre>
+<h3 id="select"><a href="#select">select</a></h3>
+<pre><code>select id [in word ...]
+do
+    cmd
+done</code></pre>
+<h3 id="sort"><a href="#sort">sort</a></h3>
+<p>说明: 一般处理类似表格的文本文件. 将其一列一列的进行分类, 切割, 合并等.</p>
+<p>选项:</p>
+<pre><code>-c: 测试是否已经分类.
+-m: 合并两个分类的文件.
+-u: 省略重复行.
+-o file1: 将结果存入file1.
+-b: 忽略前导空白.
+-n: 按数字分类. 如: 123比89大.
+-t: 制定分隔符.
+-r: 逆序排列.
+-ki: i指示第i域开始分类. i从1开始数.</code></pre>
+<h2 id="参考资料"><a href="#参考资料">参考资料</a></h2>
+<p><a href="http://bbs.chinaunix.net/thread-1779167-1-1.html">http://bbs.chinaunix.net/thread-1779167-1-1.html</a></p>
+<!-- vim:set tw=0:-->
+
+
+<div id="footer">
+    <p class="footer_titleline">Human knowledge belongs to the world</p>
+    <p class="footer_subline">Contact: wytabc@126.com</p>
+    <p class="footer_subline">声明: 本站如有侵权行为请及时通知至以上邮箱</p>
+</div>
+</div> <!--wrapper-->
+</body>
+</html>
