@@ -1,25 +1,5 @@
 <!---title:Ohlinux 运维-首页-->
-<!---keywords:Linux,Android,网络,数字音视频,编程-->
-
-##数字影音 
-
-###基础知识
-
-尚未整理
-
-###音视频编解码与容器
-
-<!-- wiki/dtv/codec/avbasic.mkd -->
-[数字音视频基础](wiki/dtv/codec/avbasic.html)
-
-<!-- wiki/dtv/codec/mpeg2.mkd -->
-[mpeg2](wiki/dtv/codec/mpeg2.html)
-
-###音视频框架
-
-尚未整理
-
-
+<!---keywords:Linux,CentOS,sa,OP,运维,开发-->
 
 ##Linux 
 
@@ -50,30 +30,6 @@
 [rtp](wiki/net/protocol/rtp.html)
 
 ###开发
-
-尚未整理
-
-
-
-##Android 
-
-###基础知识
-
-[Android简介](wiki/android/basic/intro.html)
-
-Android开发环境搭建(尚未整理)
-
-[Android编译与调试](wiki/android/basic/compiledebug.html)
-
-###Android应用开发
-
-尚未整理
-
-###Android中间层开发
-
-尚未整理
-
-###Android底层开发
 
 尚未整理
 
