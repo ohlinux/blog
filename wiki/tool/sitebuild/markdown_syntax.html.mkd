@@ -1,0 +1,170 @@
+<!---title:vimwiki与markdown语法速查-->
+<!---keywords:语法,markdown,vimwiki,使用-->
+
+##标题 
+
+<table>
+    <tr>
+        <td> 级别 </td>
+        <td> Vimwiki </td>
+        <td> Markdown </td>
+        <td> 效果 </td>
+    </tr>
+    <tr>
+        <td> 一级 </td>
+        <td> =一级标题= </td>
+        <td> #一级标题 </td>
+        <td><h1> 一级标题 </h1></td>
+    </tr>
+    <tr>
+        <td> 二级 </td>
+        <td> ==二级标题== </td>
+        <td> ##二级标题 </td>
+        <td><h2> 二级标题 </h2></td>
+    </tr>
+    <tr>
+        <td> 三级 </td>
+        <td> ===三级标题=== </td>
+        <td> ###三级标题 </td>
+        <td><h3> 三级标题 </h3></td>
+    </tr>
+    <tr>
+        <td> 四级 </td>
+        <td> ====四级标题==== </td>
+        <td> ####四级标题 </td>
+        <td><h4> 四级标题 </h4></td>
+    </tr>
+    <tr>
+        <td> 五级 </td>
+        <td> =====五级标题===== </td>
+        <td> #####五级标题 </td>
+        <td><h5> 五级标题 </h5></td>
+    </tr>
+    <tr>
+        <td> 六级 </td>
+        <td> ======六级标题====== </td>
+        <td> ######六级标题 </td>
+        <td><h6> 六级标题 </h6></td>
+    </tr>
+</table>
+
+
+##文字格式 
+
+说明: 下表中的"标记"这一列中应该没有空格, 加上只是为了不被转换, 而不是有效字符
+
+
+----------------------------------------------------
+Vimwiki           Markdown              效果
+------------   -------------------     -------------
+\*bold\*         \**bold**                **bold**
+
+\_italic_          \_italic_              _italic_
+
+\`code`            \`code`                `code`
+
+----------------------------------------------------
+
+
+##代码高亮
+
+python:
+<pre class="brush: python">
+
+class TestHelloWorld(object):
+  """Hello world python."""
+  def __init__(self, name):
+    self.name = name
+
+  def say(self):
+    print("hello {0}".format(self.name))
+
+</pre> 
+
+js:
+<pre  class="brush: js;">
+function helloSyntaxHighlighter()
+{
+	return "hi!";
+}
+</pre>
+
+
+##列表 
+
+###无序列表
+
+语法:
+
+    * bullet item 1
+        * sub item 1
+            * sub sub item 1
+
+效果:
+
+* bullet item 1
+    * sub item 1
+        * sub sub item 1
+
+
+
+###有序列表
+
+语法:
+
+    0. numbered list item A
+        0. sub numbered list item a
+    0. numbered list item C
+
+效果:
+
+0. numbered list item A
+    0. sub numbered list item a
+0. numbered list item C
+
+
+
+
+##表格 
+
+markdown本身并不支持表格, 此处的表格语法是pandoc扩展的. 如前文中的表格, 需要如下写法(其中的中文为注释, 具体绘制表格的时候不需要):
+
+
+    ----------------------------------------------------------
+    Vimwiki            空       Markdown              效果
+    ------------       列    -------------------   ----------- 这里间断线表示表头
+    \*bold\*           表    \**bold**             **bold**    表格项必须在间断线
+                       示                                      的覆盖下
+    \_italic_          列    \_italic_             _italic_
+                       分    空行表示行行分割
+    \`code`            割    \`code`               `code`
+
+    ----------------------------------------------------------
+
+当然, 也可以借用html的table标签来绘制表格, 那样就支持原生的markdown了, 而不是仅仅pandoc支持.
+
+
+
+##链接 
+
+###页面链接
+
+语法:
+
+    [首页](../../../index.html)
+
+效果:
+
+[首页](../../../index.html)
+
+###图片链接
+
+语法:
+
+    ![mpeg2_encoder](../../dtv/codec/mpeg2_encoder.jpg)
+
+效果:
+
+![mpeg2_encoder](../../dtv/codec/mpeg2_encoder.jpg)
+
+<!-- vim:set tw=0:-->

@@ -1,70 +1,25 @@
 <!---title:Ohlinux 运维-首页-->
-<!---keywords:Linux,CentOS,sa,OP,运维,开发-->
-
-
+<!---keywords:Linux,CentOS,sa,OP,mac,OSx,运维,开发-->
 
 ##Linux 
 
-###安装配置与使用
-
-[Linux网络配置](wiki/linux/usage/netconfig.html)
-
-[Linux samba配置](wiki/linux/usage/samba.html)
-
-[Linux tftp配置](wiki/linux/usage/tftp.html)
+尚未整理
 
 ###开发
 
 尚未整理
-
-
-
-##网络 
-
-###协议
-
-[tcp/ip协议速查](wiki/net/protocol/zoomtable.html)
-
-[http](wiki/net/protocol/http.html)
-
-[rtsp](wiki/net/protocol/rtsp.html)
-
-[rtp](wiki/net/protocol/rtp.html)
-
-###开发
-
-尚未整理
-
 
 ###版本管理
 
 [git](wiki/tool/versionmanage/git.html)
 
-###程序开发
-
-[Eclipse C++](wiki/tool/sw_develop/eclipse_cpp.html)
-
-[uml类图](wiki/tool/sw_develop/uml_class.html)
-
-<!-- wiki/tool/sw_develop/vim.mkd -->
-[vim配置与使用](wiki/tool/sw_develop/vim.html)
-
-###网络
-
-[使用Wireshark抓包教程](wiki/tool/net/wireshark.html)
-
 ###网站建设
 
-<!-- wiki/tool/sitebuild/mikewiki.mkd -->
-[用markdown + pandoc + makefile + git(github)搭建wiki](wiki/tool/sitebuild/mikewiki.html)
+[用markdown + pandoc + makefile + vimwiki+ git(github)搭建wiki](wiki/tool/sitebuild/ohlinuxwiki.html)
 
-<!-- wiki/tool/sitebuild/markdown_syntax.mkd -->
 [markdown语法速查](wiki/tool/sitebuild/markdown_syntax.html)
 
-<!-- wiki/tool/sitebuild/github_sshkey.mkd -->
 [github免输入密码](wiki/tool/sitebuild/github_sshkey.html)
-
-
 
 ##软件开发
 

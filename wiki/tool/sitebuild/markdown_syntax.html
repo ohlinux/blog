@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<link rel="stylesheet" href="/style.css" type="text/css" />
+
+
+
+<!--Baidu tongji-->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+          var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?25f7b92ccff21a1de8240b6abfebe77a";
+              var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+<!--Baidu tongji-->
+
+<!--SyntaxHighlighter-->
+<script type="text/javascript" src="/scripts/shCore.js"></script>
+<script type="text/javascript" src="/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJava.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shCoreFadeToGrey.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+    <p class="header_titleline">OhLinux Wiki运维空间</p>
+    <p class="header_subline"><a href="/index.html">Wiki首页</a>     <a href="http://www.ohlinux.com">Blog首页</a></p>
+</div>
+
+
+ <!--if(title)-->
+
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#标题">标题</a></li>
+<li><a href="#文字格式">文字格式</a></li>
+<li><a href="#代码高亮">代码高亮</a></li>
+<li><a href="#列表">列表</a><ul>
+<li><a href="#无序列表">无序列表</a></li>
+<li><a href="#有序列表">有序列表</a></li>
+</ul></li>
+<li><a href="#表格">表格</a></li>
+<li><a href="#链接">链接</a><ul>
+<li><a href="#页面链接">页面链接</a></li>
+<li><a href="#图片链接">图片链接</a></li>
+</ul></li>
+</ul>
+</div>
+ <!--if(toc)-->
+
+<!---title:vimwiki与markdown语法速查-->
+<!---keywords:语法,markdown,vimwiki,使用-->
+
+<h2 id="标题"><a href="#标题">标题</a></h2>
+<table>
+    <tr>
+        <td> 
+级别
+</td>
+        <td> 
+Vimwiki
+</td>
+        <td> 
+Markdown
+</td>
+        <td> 
+效果
+</td>
+    </tr>
+    <tr>
+        <td> 
+一级
+</td>
+        <td> 
+=一级标题=
+</td>
+        <td> 
+#一级标题
+</td>
+        <td><h1> 
+一级标题
+</h1></td>
+    </tr>
+    <tr>
+        <td> 
+二级
+</td>
+        <td> 
+==二级标题==
+</td>
+        <td> 
+##二级标题
+</td>
+        <td><h2> 
+二级标题
+</h2></td>
+    </tr>
+    <tr>
+        <td> 
+三级
+</td>
+        <td> 
+===三级标题===
+</td>
+        <td> 
+###三级标题
+</td>
+        <td><h3> 
+三级标题
+</h3></td>
+    </tr>
+    <tr>
+        <td> 
+四级
+</td>
+        <td> 
+====四级标题====
+</td>
+        <td> 
+####四级标题
+</td>
+        <td><h4> 
+四级标题
+</h4></td>
+    </tr>
+    <tr>
+        <td> 
+五级
+</td>
+        <td> 
+=====五级标题=====
+</td>
+        <td> 
+#####五级标题
+</td>
+        <td><h5> 
+五级标题
+</h5></td>
+    </tr>
+    <tr>
+        <td> 
+六级
+</td>
+        <td> 
+======六级标题======
+</td>
+        <td> 
+######六级标题
+</td>
+        <td><h6> 
+六级标题
+</h6></td>
+    </tr>
+</table>
+
+
+<h2 id="文字格式"><a href="#文字格式">文字格式</a></h2>
+<p>说明: 下表中的&quot;标记&quot;这一列中应该没有空格, 加上只是为了不被转换, 而不是有效字符</p>
+<table>
+<col width="20%" />
+<col width="33%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="left">Vimwiki</th>
+<th align="center">Markdown</th>
+<th align="center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">*bold*</td>
+<td align="center">*<em>bold</em>*</td>
+<td align="center"><strong>bold</strong></td>
+</tr>
+<tr class="even">
+<td align="left">_italic_</td>
+<td align="center">_italic_</td>
+<td align="center"><em>italic</em></td>
+</tr>
+<tr class="odd">
+<td align="left">`code`</td>
+<td align="center">`code`</td>
+<td align="center"><code>code</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="代码高亮"><a href="#代码高亮">代码高亮</a></h2>
+python:
+<pre class="brush: python">
+
+class TestHelloWorld(object):
+  """Hello world python."""
+  def __init__(self, name):
+    self.name = name
+
+  def say(self):
+    print("hello {0}".format(self.name))
+
+</pre> 
+
+js:
+<pre  class="brush: js;">
+function helloSyntaxHighlighter()
+{
+    return "hi!";
+}
+</pre>
+
+
+<h2 id="列表"><a href="#列表">列表</a></h2>
+<h3 id="无序列表"><a href="#无序列表">无序列表</a></h3>
+<p>语法:</p>
+<pre><code>* bullet item 1
+    * sub item 1
+        * sub sub item 1</code></pre>
+<p>效果:</p>
+<ul>
+<li>bullet item 1
+<ul>
+<li>sub item 1
+<ul>
+<li>sub sub item 1</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="有序列表"><a href="#有序列表">有序列表</a></h3>
+<p>语法:</p>
+<pre><code>0. numbered list item A
+    0. sub numbered list item a
+0. numbered list item C</code></pre>
+<p>效果:</p>
+<ol start="0" style="list-style-type: decimal">
+<li>numbered list item A
+<ol start="0" style="list-style-type: decimal">
+<li>sub numbered list item a</li>
+</ol></li>
+<li>numbered list item C</li>
+</ol>
+<h2 id="表格"><a href="#表格">表格</a></h2>
+<p>markdown本身并不支持表格, 此处的表格语法是pandoc扩展的. 如前文中的表格, 需要如下写法(其中的中文为注释, 具体绘制表格的时候不需要):</p>
+<pre><code>----------------------------------------------------------
+Vimwiki            空       Markdown              效果
+------------       列    -------------------   ----------- 这里间断线表示表头
+\*bold\*           表    \**bold**             **bold**    表格项必须在间断线
+                   示                                      的覆盖下
+\_italic_          列    \_italic_             _italic_
+                   分    空行表示行行分割
+\`code`            割    \`code`               `code`
+
+----------------------------------------------------------</code></pre>
+<p>当然, 也可以借用html的table标签来绘制表格, 那样就支持原生的markdown了, 而不是仅仅pandoc支持.</p>
+<h2 id="链接"><a href="#链接">链接</a></h2>
+<h3 id="页面链接"><a href="#页面链接">页面链接</a></h3>
+<p>语法:</p>
+<pre><code>[首页](../../../index.html)</code></pre>
+<p>效果:</p>
+<p><a href="../../../index.html">首页</a></p>
+<h3 id="图片链接"><a href="#图片链接">图片链接</a></h3>
+<p>语法:</p>
+<pre><code>![mpeg2_encoder](../../dtv/codec/mpeg2_encoder.jpg)</code></pre>
+<p>效果:</p>
+<div class="figure">
+<img src="../../dtv/codec/mpeg2_encoder.jpg" alt="mpeg2_encoder" /><p class="caption">mpeg2_encoder</p>
+</div>
+<!-- vim:set tw=0:-->
+
+
+<div id="footer">
+    <p class="footer_titleline">Human knowledge belongs to the world</p>
+    <p class="footer_subline">Contact: ajian521@gmail.com</p>
+    <p class="footer_subline">Powerby:Mike,Modify:Ajian,Put on @github.com</p>
+</div>
+</div> <!--wrapper-->
+</body>
+</html>

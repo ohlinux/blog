@@ -1,0 +1,122 @@
+<!---title:用markdown + pandoc + vimwiki + makefile + git(github)搭建wiki-->
+<!---keywords:mac,linux,vimwiki,markdown,pandoc,makefile,wiki,git,github-->
+
+这篇文章首先是在别人的基础上完全的,[Mike的wiki](http://www.mikewootc.com/wiki/tool/sitebuild/mikewiki.html),他的想法跟我不谋而合,在他的基础上我进行了一些改进,另外我现在的系统是mac,所以有些mac自己的一些特点,另外我加入了vimwiki的操作,虽然有些蹩脚,但这样总算可以完全融为一体了,后面的文章我会在原来的文章基础上改进行,再次感谢Mike(记得回复我的邮件哦.)
+
+以前用过各种工具, 记笔记写文章, 但都不是特别理想.我想用一种简单的方法,习惯了linux和mac的vim文本操作, 所以自己用markdown + pandoc + makefile + vimwiki git(github)倒腾出一套符合自己需求的工具(其实叫做方法更合适, 因为工具都现成的, 只是组合而已). 先拿出来与大家分享, 并尽量详细解释. 
+
+##前言
+
+以前用过的各种工具, 它们各自的优缺点如下:
+
+
+<table>
+    <tr>
+        <td>工具</td>  <td>优点</td>  <td>缺点</td>
+    </tr>
+    <tr>
+        <td>现成的博客(网易,新浪等)</td>  <td>简单</td>  <td>过于依赖于服务器, 文章的系统性不强, 无版本管理</td>
+    </tr>
+    <tr>
+        <td>wordpress</td>  <td>可以自主定制</td>  <td>过于依赖于服务器, 文章的系统性不强, 无版本管理</td>
+    </tr>
+    <tr>
+        <td>evernote</td>  <td>简单方便, 非常适合于做笔记.</td>  <td>用户粘性大, 无版本管理.</td>
+    </tr>
+    <tr>
+        <td>mediawiki</td>  <td>文章系统性强</td>  <td>过于依赖服务器</td>
+    </tr>
+    <tr>
+        <td>vimwiki</td>  <td>使用起来近乎完美</td>  <td>用户粘性大, 语法与工具不通用</td>
+    </tr>
+    <tr>
+        <td>github+jekyll</td>  <td>方便的版本管理.</td>  <td>模版是借助第三方的, 所以个人不太喜欢. 且需要服务器提供jekyll服务来渲染.</td>
+    </tr>
+    <tr>
+        <td></td>  <td></td>  <td></td>
+    </tr>
+<table>
+
+
+如果和我的需求类似, 但是用不习惯makefile, 那么这个应该是最好的选择了.
+
+曾经以为vimwiki是一个比较适合我的工具, 因为我一直在用vim, 所以vimwiki用起来比较顺手. 但是后来发现了一个问题, vimwiki用的语法不是通用的标准, 而且他的转化工具是vim内部脚本.  所以如果以后写的文章多了, 再行改其他的工具, 这个转化过程会是非常痛苦的. 
+
+所以总结了一下我个人对于笔记/wiki工具的需求:
+
+* 基于通用的语法协议编写, 具有通用的工具处理, 如textile, markdown, html等. 而且尽量原生(易于移植).
+* 页面的排版要能体现知识的系统性.
+* 可以转化为静态html用于网站发布.
+    * 具备自动生成目录功能.
+    * 页眉页脚与配色方案等可以独立于每篇文章作成模板.
+* 本地与在线都能使用. 
+* 编辑功能(统一最简单语法,因为markdown同一种样式有几种表现方式):
+    * 标题
+    * 段落
+    * 代码高亮(程序员必需)
+    * 具备2种以上加重功能, 包括粗体, 颜色
+    * 表格
+    * 列表: 有序 and 无序
+    * 具备类似pre的原样输出功能
+    * 内容与样式最好分离, 写作专注于是什么而不是长啥样. 也便于wiki站点整体风格统一.
+    * 所见即所得(非必须)
+    * 在一个vim里面完成文件目录,文件名创建,可进可退还可显示文件树.
+* 便于自主定制
+* 保存:
+    * 通用的文件格式, 文本文件最好.
+    * 具有版本管理: 不会担心什么误操作把辛苦多年的积累给干掉.
+    * 版本管理工具最好是分布式的, 不依赖于服务器, 这样费用就低, 离线使用也方便. 
+
+
+基于以上需求, 我自己用markdown + pandoc + makefile + vimwiki + git(github)倒腾出一套符合自己需求的工具(其实叫平台或者方法更合适, 因为工具都现成的, 只是组合而已). 不过这种用很多小工具组合成平台的方法, 也正体现了unix的哲学之一: 个体很渺小, 联合很强大.
+
+我的这套平台具有以下特点:
+
+**优点:**
+
+* markdown是通用的语法标准. 而且兼容html的语法. 
+* makefile和git是通用的工具.makefile实现了编译的自动化,git实现了文件的备份. 
+* pandoc可以将markdown转化为多种标记语言, 从而不会被markdown限制住. 
+* pandoc在转化html时进行了模版扩展, 丰富了页面的外观, 而且这些扩展又很容易被取代, 所以降低了粘性.
+* vimwiki 方便使用vim进行目录,文件的创建,而不用单独去创建,还可以显示文件树,可进可退,因为使用了markdown语法之后,他自带的生成html的功能就不行了,所以使用pandoc来代替.
+* 在线与离线都能用. 
+* 具备一个检查无效链接的工具, 这在重命名文件或者移动页面路径的时候很有用. 
+* 跨平台. 对于本地使用来说, 基本上几个主流系统都有gnu的开发环境可以安装. 对于在线版本, 因为make出来的就是静态html, 所以随便找个服务器或者什么主机空间就能发布. github更是提供带git功能的免费发布平台.
+
+**缺点:**
+
+* 需要使用命令行. 但是其实也就那么几条命令. 
+* padoc对表格的扩展, 并非通用语法. 但是这个我可以忍受. 如果您觉得不爽, 也可以直接用html的表格语法(这在网上拷贝某个表格的时候尤其方便).
+
+##基本原理
+
+1. 使用vimwiki配置进行wiki写作,直接生成.html.mkd文件(这个.html暂时没有好的办法去掉,只是一个显示问题,所以还可以接受)[vimwiki使用](vimwiki.html)
+2. 将用markdown写的文章或者笔记保存为.mkd文件, 并在本地按照知识体系安排好文件夹层次. mtd语法请参照: [markdown语法](markdown_syntax.html)
+3. 用makefile调用pandoc, 并套用pandoc模版, 生成html. 请参考: [pandoc模板](pandoc_template.html) 以及下文的makefile分析部分.
+4. 用git上传到github进行在线发表. 如果你有兴趣的话github还能绑定自己的域名. 请参考: [github发布个人wiki](github_page.html)
+
+这样, 本地笔记和在线wiki就都有了. 
+
+##使用方法
+
+1. 使用前提: 先安装make,vimwiki,pandoc, git. windows下可以使用cygwin模拟.
+2. 下载: [示例包](mikewikisample.tar.gz)查看 ohlinux.github.com/blog
+3. 将makefile与index.mkd放在同级目录, 并置于将要发布的网站的顶级目录(因为其他页面都是从此向子目录搜索编译的). 
+4. 键入make all , 回车. 生成html. 
+5. 假如这些文章已经被git管理, 则可以用git push到github进行发表,pub.sh.
+
+##相关知识:
+
+* html/css入门: http://www.w3school.com.cn/
+* makefile入门: http://wiki.ubuntu.org.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile
+* git使用入门: http://www.uml.org.cn/pzgl/201204285.asp
+
+
+##makefile解析
+
+通过分析makefile, 便可了解本方法的核心原理. 从而定制出符合您自己需求的工具版本. 
+
+请查看上面的示例包中的makefile的源文件, 对照里面的注释即可看懂. 如果看不懂, 就参考上面的makefile入门的链接.
+
+
+<!-- vim:set tw=0:-->

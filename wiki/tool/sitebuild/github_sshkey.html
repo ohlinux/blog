@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<link rel="stylesheet" href="/style.css" type="text/css" />
+
+
+
+<!--Baidu tongji-->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+          var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?25f7b92ccff21a1de8240b6abfebe77a";
+              var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+<!--Baidu tongji-->
+
+<!--SyntaxHighlighter-->
+<script type="text/javascript" src="/scripts/shCore.js"></script>
+<script type="text/javascript" src="/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJava.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shCoreFadeToGrey.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+    <p class="header_titleline">OhLinux Wiki运维空间</p>
+    <p class="header_subline"><a href="/index.html">Wiki首页</a>     <a href="http://www.ohlinux.com">Blog首页</a></p>
+</div>
+
+
+ <!--if(title)-->
+
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#生成ssh-key">生成ssh key</a></li>
+<li><a href="#将ssh-key上传github">将ssh key上传github</a></li>
+<li><a href="#测试">测试</a></li>
+</ul>
+</div>
+ <!--if(toc)-->
+
+<!---title:github免输入密码-->
+<!---keywords:github,免输入密码,ssh-keygen-->
+
+
+<h2 id="生成ssh-key"><a href="#生成ssh-key">生成ssh key</a></h2>
+<p>输入命令:</p>
+<pre><code>ssh-keygen</code></pre>
+<p>一路回车, 会显示类似如下信息:</p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/test/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/test/.ssh/id_rsa.
+Your public key has been saved in /home/test/.ssh/id_rsa.pub.
+The key fingerprint is:
+11:22:33:44:55:66:77:88:99:00:11:22:33:44:55:66 test@debian6
+The key&#39;s randomart image is:
++--[ RSA 2048]----+
+|+O=.. .          |
+|o.+. o           |
+|.F,   .          |
+|*=x    .         |
+|1+f,    S        |
+| fdfdsa .        |
+|o                |
+| .               |
+|                 |
++-----------------+</code></pre>
+<p>生成的默认路径在~/.ssh下, 其中<code>id_rsa.pub</code>是公钥, 上传到github即可.</p>
+<h2 id="将ssh-key上传github"><a href="#将ssh-key上传github">将ssh key上传github</a></h2>
+<ol style="list-style-type: decimal">
+<li><p>登录github</p></li>
+<li><p>点击右上角的图标: &quot;Account settings&quot;, 进入设置界面.</p></li>
+<li><p>点击左边的&quot;SSH Keys&quot;, 然后点击&quot;Add key&quot;.</p></li>
+<li><p>将刚刚生成的<code>~/.ssh/id_rsa.pub</code>中的全部字符拷贝到网页的弹出框中, 然后点击添加.</p></li>
+</ol>
+<h2 id="测试"><a href="#测试">测试</a></h2>
+<p>测试之前, 请查看本地的github克隆中的.git/config文件中的字段</p>
+<pre><code>[remote &quot;origin&quot;]
+    fetch = +refs/heads/*:refs/remotes/origin/*
+    url = git@github.com:mikewootc/mikewootc.github.io.git</code></pre>
+<p>确认该字段中的url是<code>git@</code>打头, 而非<code>https</code>打头. 否则即使测试成功, 再push的仍然需要密码, 因为用的不是ssh方式认证. 如果不是的话, 将这行改过来即可.</p>
+<p>然后本机命令行键入:</p>
+<pre><code>ssh -T git@github.com</code></pre>
+<p>可能会显示:</p>
+<pre><code>The authenticity of host &#39;github.com (207.97.227.239)&#39; can&#39;t be established.
+# RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+# Are you sure you want to continue connecting (yes/no)?</code></pre>
+<p>键入yes, 回车. 如果成功, 则会显示:</p>
+<pre><code>Hi mikewootc! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre>
+<!-- vim:set tw=0:-->
+
+
+<div id="footer">
+    <p class="footer_titleline">Human knowledge belongs to the world</p>
+    <p class="footer_subline">Contact: ajian521@gmail.com</p>
+    <p class="footer_subline">Powerby:Mike,Modify:Ajian,Put on @github.com</p>
+</div>
+</div> <!--wrapper-->
+</body>
+</html>
