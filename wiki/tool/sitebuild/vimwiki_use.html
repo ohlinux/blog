@@ -78,15 +78,26 @@
 <li>map 创建Vimwiki2HTML命令的快捷键</li>
 </ul></li>
 </ul>
-<pre>
-    
-<p>&quot; vimwiki let g:vimwiki_list = [{'path': '~/Dropbox/blog/',  'path_html': '~/Dropbox/blog/html/',  'syntax': 'markdown',  'ext': '.mkd',  'template_path': '~/Dropbox/blog/',  'template_default': 'template',  'template_ext': '.html'}] let g:vimwiki_camel_case = 0 let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}</p>
-<pre><code>map &lt;F4&gt; &lt;Plug&gt;Vimwiki2HTML
+<pre class="brush: bash">
+
+<pre><code>&quot; vimwiki
+let g:vimwiki_list = [{&#39;path&#39;: &#39;~/Dropbox/blog/&#39;,
+\ &#39;path_html&#39;: &#39;~/Dropbox/blog/html/&#39;,
+\ &#39;syntax&#39;: &#39;markdown&#39;,
+\ &#39;ext&#39;: &#39;.mkd&#39;,
+\ &#39;template_path&#39;: &#39;~/Dropbox/blog/&#39;,
+\ &#39;template_default&#39;: &#39;template&#39;,
+\ &#39;template_ext&#39;: &#39;.html&#39;}]
+let g:vimwiki_camel_case = 0
+let g:vimwiki_ext2syntax = {&#39;.md&#39;:&#39;markdown&#39;,&#39;.markdown&#39;:&#39;markdown&#39;,&#39;.mdown&#39;:&#39;markdown&#39;,&#39;.mkd&#39;:&#39;markdown&#39;}
+
+map &lt;F4&gt; &lt;Plug&gt;Vimwiki2HTML
 map &lt;S-F4&gt; &lt;Plug&gt;VimwikiAll2HTML</code></pre>
 <pre>
 
 <h2 id="vimwiki语法"><a href="#vimwiki语法">vimwiki语法</a></h2>
-<p>可以在这里下载:<a href="vimwikiqrc.pdf">vimwiki语法pdf</a> <a href="markdown_syntax.html">vimwiki与markdown 的语法区别</a></p>
+<p>可以在这里下载:<a href="vimwikiqrc.pdf">vimwiki语法pdf</a></p>
+<p><a href="markdown_syntax.html">vimwiki与markdown 的语法区别</a></p>
 <h2 id="操作vimwiki"><a href="#操作vimwiki">操作vimwiki</a></h2>
 <p>vimwiki的键操作是我最喜欢的,可以在一个vim里面完成所有的工作而不需要不断的切换.可以完整的享受输写的乐趣.</p>
 <ul>
@@ -107,9 +118,26 @@ map &lt;S-F4&gt; &lt;Plug&gt;VimwikiAll2HTML</code></pre>
 <li>退格键 返回上级wiki</li>
 </ul></li>
 <li><p>Golbal 命令</p>
-<p>:VimwikiGoHome :VimwikiTabGoHome :VimwikiUISelect</p></li>
+<ul>
+<li>:VimwikiGoHome</li>
+<li>:VimwikiTabGoHome</li>
+<li>:VimwikiUISelect</li>
+</ul></li>
 <li><p>Buffer 命令</p>
-<p>:Vimwiki2HTML :VimwikiAll2HTML :VimwikiDeleteWord :VimwikiDeleteWord :VimwikiFollowWord :VimwikiGoBackWord :VimwikiNextWord :VimwikiPrevWord :VimwikiRenameWord :VimwikiSplitWord :VimwikiToggleListItem :VimwikiVsplitWord</p></li>
+<ul>
+<li>:Vimwiki2HTML</li>
+<li>:VimwikiAll2HTML</li>
+<li>:VimwikiDeleteWord</li>
+<li>:VimwikiDeleteWord</li>
+<li>:VimwikiFollowWord</li>
+<li>:VimwikiGoBackWord</li>
+<li>:VimwikiNextWord</li>
+<li>:VimwikiPrevWord</li>
+<li>:VimwikiRenameWord</li>
+<li>:VimwikiSplitWord</li>
+<li>:VimwikiToggleListItem</li>
+<li>:VimwikiVsplitWord</li>
+</ul></li>
 </ul>
 
 <div id="footer">

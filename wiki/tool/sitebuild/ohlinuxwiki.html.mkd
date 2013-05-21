@@ -112,7 +112,9 @@
     * readlink 命令不需要,mkdtohtml.sh脚本进行了一些修改.
 * vimwiki的特殊配置
     * vimrc配置文件[我的vimrc配置文件](vimrc)
-<pre>
+    
+<pre class="brush: bash">
+
     " vimwiki
     let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
     \ 'path_html': '~/Dropbox/blog/html/',
@@ -130,7 +132,9 @@
     "insert date
     nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
     imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>
+    
 </pre>
+
     * 配置中F4转html的基本可以不用了.
     * insert date是可以直接输入时间的一个命令,按F3
     * 我的vimrc配置文件仅供参考,里面还有很多其它的配置.
