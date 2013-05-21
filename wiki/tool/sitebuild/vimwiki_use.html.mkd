@@ -22,19 +22,19 @@ vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式�
     * map 创建Vimwiki2HTML命令的快捷键
 
 <pre class="brush: bash">
-    " vimwiki配置
-    let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
-    \ 'path_html': '~/Dropbox/blog/html/',
-    \ 'syntax': 'markdown',
-    \ 'ext': '.mkd',
-    \ 'template_path': '~/Dropbox/blog/',
-    \ 'template_default': 'template',
-    \ 'template_ext': '.html'}]
-    let g:vimwiki_camel_case = 0
-    let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+" vimwiki配置
+let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
+\ 'path_html': '~/Dropbox/blog/html/',
+\ 'syntax': 'markdown',
+\ 'ext': '.mkd',
+\ 'template_path': '~/Dropbox/blog/',
+\ 'template_default': 'template',
+\ 'template_ext': '.html'}]
+let g:vimwiki_camel_case = 0
+let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
 
-    map <F4> <Plug>Vimwiki2HTML
-    map <S-F4> <Plug>VimwikiAll2HTML
+map <F4> <Plug>Vimwiki2HTML
+map <S-F4> <Plug>VimwikiAll2HTML
 </pre>
 
 ## vimwiki语法
@@ -54,6 +54,7 @@ vimwiki的键操作是我最喜欢的,可以在一个vim里面完成所有的工
     * <leader>w<leader>w 打开/新建当天日记
     * <leader>w<keader>t 在新tab打开/新建当天日记
     * <leader>ws 选择维基项目（详见下面的“多个维基项目”一节）
+     
 * 编辑时的按键
     * tab 到下一个链接
     * shift + tab 到上一个链接
