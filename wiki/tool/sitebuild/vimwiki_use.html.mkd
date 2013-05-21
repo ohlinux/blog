@@ -23,7 +23,7 @@ vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式�
 
 <pre class="brush: bash">
 
-    " vimwiki
+    " vimwiki配置
     let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
     \ 'path_html': '~/Dropbox/blog/html/',
     \ 'syntax': 'markdown',

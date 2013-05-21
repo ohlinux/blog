@@ -217,7 +217,7 @@ github+jekyll
 </ul>
 <pre class="brush: bash">
 
-    " vimwiki
+    " vimwiki配置
     let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
     \ 'path_html': '~/Dropbox/blog/html/',
     \ 'syntax': 'markdown',
@@ -231,7 +231,7 @@ github+jekyll
 
     map <F4> <Plug>Vimwiki2HTML
     map <S-F4> <Plug>VimwikiAll2HTML
-    "insert date
+    "insert date插入日期
     nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
     imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>
     
