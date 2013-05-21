@@ -1,0 +1,109 @@
+<!---title:pandoc安装和使用-->
+<!---keywords:mac,linux,markdown,pandoc-->
+
+我们都知道markdown的格式很简单,主要是让写者可以专注文字而不是格式,但格式我们少不了,需要html pdf ppt等输出,这个时候pandoc是一个很好选择
+
+haskell
+是什么？一种编程语言。每位资深的开发者学习它，都会有些不知所措，因为，它的编程思路不同于通常意义上类似于C\#、Python、Java这些流行的编程语言。它来自一群高智商的开发者的贡献，据说人人有PHD学位，是函数式编程语言的典范。当然，Pandoc作者John MacFarlane也不例外，他是一位来自美国加州大学伯克利分校的哲学教授，研究的是认识论这类高深议题:D
+
+文本格式转换，每位开发过这方面程序的技术青年，都知道它有多么痛苦；开发出的程序有多么丑陋。甚至可以说，这是个无底黑洞。事实证明，haskell的确是干这脏活、累活的最恰当选择。Pandoc也的确成功了，并已成功在短期内构建一个完整的生态链
+
+#  Pandoc安装
+
+* 最简单的安装办法(推荐办法)
+
+下载软件，找到相应操作系统对应的文件，然后按照默认点击即可。如果你不需要学习Haskell，请使用此种办法，好处多多。
+
+* 更技术的安装办法（学习Haskell者使用）
+
+一个通用的安装方式是,安装Haskell平台.然后再通过Haskell平台安装Pandoc。步骤如下：
+
+    * 安装Haskell平台
+
+    如果之前，你通过其它方式，安装过Haskell的运行平台，需要卸载，Mac下命令如下：
+
+    /Library/Haskell/bin/uninstall-hs
+    然后，系统会找到你之前安装过的版本，如7.4.1、7.0.4，运行下列命令：
+    
+    sudo uninstall-hs only 7.0.4 --remove sudo uninstall-hs only 7.4.1
+    --remove
+    下载Haskell平台，下载地址是：http://hackage.haskell.org/platform/
+    
+    选择你相应的操作系统平台即可。
+    
+    然后下载完之后，一路按照默认安装即可。配置在.bashrc或者修改.zshrc文件。作者使用的是zshrc配置文件。因此，在\~/.zshrc文件末尾增加一行：
+    
+    export PATH="$HOME/Library/Haskell/bin:$PATH"
+    这样可以直接通过shell来控制Haskell。打开终端，如iterm2，输入：
+    
+    cabal update
+    cabal是类似于Ruby下的rubygems一样的包管理器。cabal程序会链接到服务器http://hackage.haskell.org/packages/archive/上下载相应的包信息。下载时间会较长，请耐心等候，并检查本机与HaskellDB服务器的连接速度。
+    
+    * 安装pandoc
+
+    运行：
+    
+    cabal install pandoc
+    编译安装时间较漫长.
+    
+    
+#  Pandoc文档转换
+
+##  Markdown转html、word与PDF
+
+如下例所示：
+
+转html格式
+
+pandoc 01-chapter2.markdown -o chapter2.html -c Github.css
+转word格式
+
+pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css
+##  Markdown转PDF
+
+安装LaTex
+
+待补。
+
+转pdf格式
+
+    pandoc  01-chapter2.markdown -o 01-chapter2.pdf --latex-engine=xelatex -V mainfont=heiti\ 
+
+##  Pandoc生成epub、html与在线电子书
+
+*  安装nodejs与grunt、bower
+
+下载nodejs安装包，网址为：http://nodejs.org/
+
+下载之后，安装默认安装。安装完之后，确认安装是否成功。
+
+npm -v
+如果如我一样，使用的是zsh。在.zshrc文件中添加nodejs的路径。
+
+mate ~/.zshrc
+在文件末尾添加：
+
+export PATH=/usr/local/share/npm/bin:$PATH
+然后，安装grunt。
+
+sudo npm install -g grunt
+安装bower等。
+
+sudo npm install -g bower
+ 
+* 使用wbb生成epub、html与在线电子书示范
+
+以著名的progit为例。
+
+git clone https://github.com/PascalPrecht/wbb test2012
+cd test2012
+然后检查clone下来的项目，是否已经包含了grunt.js等文件。各项生成代码写在那里面。
+
+书稿则写在/test2012/src/chapters 这样的目录下面。
+
+写作书稿时，完全按照正常git流程管理。书稿预览效果，是在test2012的根目录下面，运行：
+
+grunt wbb:html
+自定义各项参数，请修改grunt.js文件。
+
+生成的epub、html与moblie在线电子书，在builds目录下面。同时可以设置，与leanpub在线出版网站搭配。

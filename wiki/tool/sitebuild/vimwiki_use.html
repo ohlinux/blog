@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<link rel="stylesheet" href="/style.css" type="text/css" />
+
+
+
+<!--Baidu tongji-->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+          var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?25f7b92ccff21a1de8240b6abfebe77a";
+              var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+<!--Baidu tongji-->
+
+<!--SyntaxHighlighter-->
+<script type="text/javascript" src="/scripts/shCore.js"></script>
+<script type="text/javascript" src="/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/scripts/shBrushJava.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shCoreFadeToGrey.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+    <p class="header_titleline">OhLinux Wiki运维空间</p>
+    <p class="header_subline"><a href="/index.html">Wiki首页</a>     <a href="http://www.ohlinux.com">Blog首页</a></p>
+</div>
+
+
+ <!--if(title)-->
+
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#安装vimwiki">安装vimwiki</a></li>
+<li><a href="#配置vimwiki">配置vimwiki</a></li>
+<li><a href="#vimwiki语法">vimwiki语法</a></li>
+<li><a href="#操作vimwiki">操作vimwiki</a></li>
+</ul>
+</div>
+ <!--if(toc)-->
+
+<!---title:VimWiki的安装和使用-->
+<!---keywords:mac,linux,vimwiki-->
+
+<p>Vim 里有个 vimwiki 插件，正在使用 Vim 的同学一定有所耳闻。有了vimwiki， 搭配Vim本身强大的编辑功能，你就拥有了一个快速、轻巧、功能强大的个人笔记本。通过 vimwiki 输出HTML页面，你还能方便地和别人分享自己的知识积累。该文章摘自源文<a href="http://wiki.ktmud.com/tips/vim/vimwiki-guide.html">用vimwiki搭建自己的维基世界</a>.取其精华和自己的理解,用于了这个wiki的搭建.</p>
+<h2 id="安装vimwiki"><a href="#安装vimwiki">安装vimwiki</a></h2>
+<p>vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式。其中 vba 是 Vim 独有的插件安装包。推荐使用 vba 安装，因为它能保存你的安装信息，不高兴了还可以卸载（详细说明请:h vba）。要使用这种安装方式，需要有 vimball 插件。</p>
+<p>使用 Vim 打开 vimwiki.vba ，然后执行 :so % ，就这么简单。</p>
+<p>装好之后，您可以马上使用 :h vimwiki 查看帮助。</p>
+<h2 id="配置vimwiki"><a href="#配置vimwiki">配置vimwiki</a></h2>
+<ul>
+<li>配置vimrc
+<ul>
+<li>path wiki的根目录,可以有多个</li>
+<li>path_html html输出的位置执行Vimwiki2HTML的时候</li>
+<li>syntax 如果不指定markdown使用的是vimwiki的语法</li>
+<li>ext 编辑的文件和enter产生的文件后缀是.mkd</li>
+<li>template相关输出html时的模版</li>
+<li>map 创建Vimwiki2HTML命令的快捷键</li>
+</ul></li>
+</ul>
+<pre><code>    &quot; vimwiki
+    let g:vimwiki_list = [{&#39;path&#39;: &#39;~/Dropbox/blog/&#39;,
+    \ &#39;path_html&#39;: &#39;~/Dropbox/blog/html/&#39;,
+    \ &#39;syntax&#39;: &#39;markdown&#39;,
+    \ &#39;ext&#39;: &#39;.mkd&#39;,
+    \ &#39;template_path&#39;: &#39;~/Dropbox/blog/&#39;,
+    \ &#39;template_default&#39;: &#39;template&#39;,
+    \ &#39;template_ext&#39;: &#39;.html&#39;}]
+    let g:vimwiki_camel_case = 0
+    let g:vimwiki_ext2syntax = {&#39;.md&#39;:&#39;markdown&#39;,&#39;.markdown&#39;:&#39;markdown&#39;,&#39;.mdown&#39;:&#39;markdown&#39;,&#39;.mkd&#39;:&#39;markdown&#39;}
+
+    map &lt;F4&gt; &lt;Plug&gt;Vimwiki2HTML
+    map &lt;S-F4&gt; &lt;Plug&gt;VimwikiAll2HTML</code></pre>
+<h2 id="vimwiki语法"><a href="#vimwiki语法">vimwiki语法</a></h2>
+<p>可以在这里下载:<a href="vimwikiqrc.pdf">vimwiki语法pdf</a> <a href="markdown_syntax.html">vimwiki与markdown 的语法区别</a></p>
+<h2 id="操作vimwiki"><a href="#操作vimwiki">操作vimwiki</a></h2>
+<p>vimwiki的键操作是我最喜欢的,可以在一个vim里面完成所有的工作而不需要不断的切换.可以完整的享受输写的乐趣.</p>
+<ul>
+<li>快捷键总览
+<ul>
+<li><leader>为'',直接vim就可以打开</li>
+<li><leader>ww 在当前窗口打开维基首页</li>
+<li><leader>wt 在新tab打开维基首页</li>
+<li><leader>w<leader>w 打开/新建当天日记</li>
+<li><leader>w<keader>t 在新tab打开/新建当天日记</li>
+<li><leader>ws 选择维基项目（详见下面的“多个维基项目”一节）</li>
+</ul></li>
+<li>编辑时的按键
+<ul>
+<li>tab 到下一个链接</li>
+<li>shift + tab 到上一个链接</li>
+<li>回车 进入wiki连接（如果是外链则在浏览器打开）</li>
+<li>退格键 返回上级wiki</li>
+</ul></li>
+<li><p>Golbal 命令</p>
+<p>:VimwikiGoHome :VimwikiTabGoHome :VimwikiUISelect</p></li>
+<li><p>Buffer 命令</p>
+<p>:Vimwiki2HTML :VimwikiAll2HTML :VimwikiDeleteWord :VimwikiDeleteWord :VimwikiFollowWord :VimwikiGoBackWord :VimwikiNextWord :VimwikiPrevWord :VimwikiRenameWord :VimwikiSplitWord :VimwikiToggleListItem :VimwikiVsplitWord</p></li>
+</ul>
+
+<div id="footer">
+    <p class="footer_titleline">Human knowledge belongs to the world</p>
+    <p class="footer_subline">Contact: ajian521@gmail.com</p>
+    <p class="footer_subline">Powerby:Mike,Modify:Ajian,Put on @github.com</p>
+</div>
+</div> <!--wrapper-->
+</body>
+</html>

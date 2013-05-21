@@ -19,6 +19,10 @@
 
 [markdown语法速查](wiki/tool/sitebuild/markdown_syntax.html)
 
+[vimwiki安装和使用](wiki/tool/sitebuild/vimwiki_use.html)
+
+[pandoc安装使用](wiki/tool/sitebuild/pandoc_install.html)
+
 [github免输入密码](wiki/tool/sitebuild/github_sshkey.html)
 
 ##软件开发

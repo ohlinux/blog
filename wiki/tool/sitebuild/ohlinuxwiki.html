@@ -53,6 +53,7 @@
 <li><a href="#前言">前言</a></li>
 <li><a href="#基本原理">基本原理</a></li>
 <li><a href="#使用方法">使用方法</a></li>
+<li><a href="#注意">注意</a></li>
 <li><a href="#相关知识">相关知识:</a></li>
 <li><a href="#makefile解析">makefile解析</a></li>
 </ul>
@@ -116,7 +117,7 @@ mediawiki
         <td>
 vimwiki
 </td>  <td>
-使用起来近乎完美
+使用起来近乎完美,很强的文档操作
 </td>  <td>
 用户粘性大, 语法与工具不通用
 </td>
@@ -129,9 +130,6 @@ github+jekyll
 </td>  <td>
 模版是借助第三方的, 所以个人不太喜欢. 且需要服务器提供jekyll服务来渲染.
 </td>
-    </tr>
-    <tr>
-        <td></td>  <td></td>  <td></td>
     </tr>
 <table>
 
@@ -174,7 +172,7 @@ github+jekyll
 <p><strong>优点:</strong></p>
 <ul>
 <li>markdown是通用的语法标准. 而且兼容html的语法.</li>
-<li>makefile和git是通用的工具.makefile实现了编译的自动化,git实现了文件的备份.</li>
+<li>makefile和git是通用的工具.makefile实现了编译的自动化和避免重复编译,git实现了文件的备份.</li>
 <li>pandoc可以将markdown转化为多种标记语言, 从而不会被markdown限制住.</li>
 <li>pandoc在转化html时进行了模版扩展, 丰富了页面的外观, 而且这些扩展又很容易被取代, 所以降低了粘性.</li>
 <li>vimwiki 方便使用vim进行目录,文件的创建,而不用单独去创建,还可以显示文件树,可进可退,因为使用了markdown语法之后,他自带的生成html的功能就不行了,所以使用pandoc来代替.</li>
@@ -189,20 +187,47 @@ github+jekyll
 </ul>
 <h2 id="基本原理"><a href="#基本原理">基本原理</a></h2>
 <ol style="list-style-type: decimal">
-<li>使用vimwiki配置进行wiki写作,直接生成.html.mkd文件(这个.html暂时没有好的办法去掉,只是一个显示问题,所以还可以接受)<a href="vimwiki.html">vimwiki使用</a></li>
+<li>使用vimwiki配置进行wiki写作,直接生成.html.mkd文件(这个.html暂时没有好的办法去掉,只是一个显示问题,所以还可以接受)<a href="vimwiki_use.html">vimwiki使用</a></li>
 <li>将用markdown写的文章或者笔记保存为.mkd文件, 并在本地按照知识体系安排好文件夹层次. mtd语法请参照: <a href="markdown_syntax.html">markdown语法</a></li>
-<li>用makefile调用pandoc, 并套用pandoc模版, 生成html. 请参考: <a href="pandoc_template.html">pandoc模板</a> 以及下文的makefile分析部分.</li>
+<li>用makefile调用pandoc, 并套用pandoc模版, 生成html. 请参考: <a href="pandoc_install.html">pandoc安装使用</a> 以及下文的makefile分析部分.</li>
 <li>用git上传到github进行在线发表. 如果你有兴趣的话github还能绑定自己的域名. 请参考: <a href="github_page.html">github发布个人wiki</a></li>
 </ol>
 <p>这样, 本地笔记和在线wiki就都有了.</p>
 <h2 id="使用方法"><a href="#使用方法">使用方法</a></h2>
 <ol style="list-style-type: decimal">
 <li>使用前提: 先安装make,vimwiki,pandoc, git. windows下可以使用cygwin模拟.</li>
-<li>下载: <a href="mikewikisample.tar.gz">示例包</a>查看 ohlinux.github.com/blog</li>
+<li>源码程序示例 查看 https://github.com/ohlinux/blog</li>
 <li>将makefile与index.mkd放在同级目录, 并置于将要发布的网站的顶级目录(因为其他页面都是从此向子目录搜索编译的).</li>
 <li>键入make all , 回车. 生成html.</li>
 <li>假如这些文章已经被git管理, 则可以用git push到github进行发表,pub.sh.</li>
 </ol>
+<h2 id="注意"><a href="#注意">注意</a></h2>
+<p>这个跟原来作者linux的系统有区别,而且添加了vimwiki之后的区别.</p>
+<ul>
+<li>mac shell脚本的区别
+<ul>
+<li>find 一定要接路径,linux下面可以省略 find /path -name &quot;*.html.mkd&quot;</li>
+<li>sed 替换一定要备份文件的填写,如果不想备份,-i 就可以完成-e的操作,可以使用 sed -i '' 's/xxx/yyy/g' file</li>
+<li>readlink 命令不需要,mkdtohtml.sh脚本进行了一些修改.</li>
+</ul></li>
+<li>vimwiki的特殊配置
+<ul>
+<li>vimrc配置文件<a href="vimrc">我的vimrc配置文件</a> ``` &quot; vimwiki let g:vimwiki_list = [{'path': '~/Dropbox/blog/',  'path_html': '~/Dropbox/blog/html/',  'syntax': 'markdown',  'ext': '.mkd',  'template_path': '~/Dropbox/blog/',  'template_default': 'template',  'template_ext': '.html'}] let g:vimwiki_camel_case = 0 &quot;let g:vimwiki_file_exts = 'c, cpp, txt, h, hpp, sh, awk' let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}</li>
+</ul>
+map <F4> <Plug>Vimwiki2HTML map <S-F4> <Plug>VimwikiAll2HTML &quot;insert date nmap <F3> a<C-R>=strftime(&quot;%Y-%m-%d %I:%M %p&quot;)<CR><Esc> imap <F3> <C-R>=strftime(&quot;%Y-%m-%d %I:%M %p&quot;)<CR> ```
+<ul>
+<li>配置中F4转html的基本可以不用了.</li>
+<li>insert date是可以直接输入时间的一个命令,按F3</li>
+<li>我的vimrc配置文件仅供参考,里面还有很多其它的配置.</li>
+</ul></li>
+<li>vimwiki操作
+<ul>
+<li>通常正常操作,vim 进入之后,可以直接执行 就可以进入 index.mkd的主wiki,但wiki的链接都是使用path/test.html的链接记录的,如果按驾车直接进行的是test.html.mkd文件的编辑.</li>
+<li>设置1:设置makefile的文件是查找.html.mkd文件,pandoc输出的文档为 .html (我一直想找vimwiki的配置修改在回车时创建的文件是不包含.html,但未成功)</li>
+<li>设置2:因为index.mkd是进入操作的文件,makefile无法匹配到,hacker的做法 ln -s index.mkd index.html.mkd</li>
+<li>这样设置完后,vimwiki可以直接按填写的链接进行目录和文件的创建,无需切出来了.</li>
+</ul></li>
+</ul>
 <h2 id="相关知识"><a href="#相关知识">相关知识:</a></h2>
 <ul>
 <li>html/css入门: http://www.w3school.com.cn/</li>

@@ -1,0 +1,81 @@
+<!---title:VimWiki的安装和使用-->
+<!---keywords:mac,linux,vimwiki-->
+
+Vim 里有个 vimwiki 插件，正在使用 Vim 的同学一定有所耳闻。有了vimwiki， 搭配Vim本身强大的编辑功能，你就拥有了一个快速、轻巧、功能强大的个人笔记本。通过 vimwiki 输出HTML页面，你还能方便地和别人分享自己的知识积累。该文章摘自源文[用vimwiki搭建自己的维基世界](http://wiki.ktmud.com/tips/vim/vimwiki-guide.html).取其精华和自己的理解,用于了这个wiki的搭建.
+
+## 安装vimwiki
+
+vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式。其中 vba 是 Vim 独有的插件安装包。推荐使用 vba 安装，因为它能保存你的安装信息，不高兴了还可以卸载（详细说明请:h vba）。要使用这种安装方式，需要有 vimball 插件。
+
+使用 Vim 打开 vimwiki.vba ，然后执行 :so % ，就这么简单。
+
+装好之后，您可以马上使用 :h vimwiki 查看帮助。
+
+## 配置vimwiki
+
+* 配置vimrc
+    * path wiki的根目录,可以有多个
+    * path_html html输出的位置执行Vimwiki2HTML的时候
+    * syntax 如果不指定markdown使用的是vimwiki的语法
+    * ext 编辑的文件和enter产生的文件后缀是.mkd
+    * template相关输出html时的模版
+    * map 创建Vimwiki2HTML命令的快捷键
+
+```
+    " vimwiki
+    let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
+    \ 'path_html': '~/Dropbox/blog/html/',
+    \ 'syntax': 'markdown',
+    \ 'ext': '.mkd',
+    \ 'template_path': '~/Dropbox/blog/',
+    \ 'template_default': 'template',
+    \ 'template_ext': '.html'}]
+    let g:vimwiki_camel_case = 0
+    let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+
+    map <F4> <Plug>Vimwiki2HTML
+    map <S-F4> <Plug>VimwikiAll2HTML
+```
+
+## vimwiki语法
+
+可以在这里下载:[vimwiki语法pdf](vimwikiqrc.pdf)
+[vimwiki与markdown 的语法区别](markdown_syntax.html)
+
+## 操作vimwiki
+
+vimwiki的键操作是我最喜欢的,可以在一个vim里面完成所有的工作而不需要不断的切换.可以完整的享受输写的乐趣.
+
+* 快捷键总览
+    * <leader>为'\',直接vim就可以打开
+    * <leader>ww 在当前窗口打开维基首页
+    * <leader>wt 在新tab打开维基首页
+    * <leader>w<leader>w 打开/新建当天日记
+    * <leader>w<keader>t 在新tab打开/新建当天日记
+    * <leader>ws 选择维基项目（详见下面的“多个维基项目”一节）
+* 编辑时的按键
+    * tab 到下一个链接
+    * shift + tab 到上一个链接
+    * 回车 进入wiki连接（如果是外链则在浏览器打开）
+    * 退格键 返回上级wiki
+
+* Golbal 命令
+
+    :VimwikiGoHome
+    :VimwikiTabGoHome
+    :VimwikiUISelect
+    
+* Buffer 命令
+
+    :Vimwiki2HTML
+    :VimwikiAll2HTML
+    :VimwikiDeleteWord
+    :VimwikiDeleteWord
+    :VimwikiFollowWord
+    :VimwikiGoBackWord
+    :VimwikiNextWord
+    :VimwikiPrevWord
+    :VimwikiRenameWord
+    :VimwikiSplitWord
+    :VimwikiToggleListItem
+    :VimwikiVsplitWord
