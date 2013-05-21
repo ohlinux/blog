@@ -1,19 +1,76 @@
 <!---title:Ohlinux 运维-首页-->
 <!---keywords:Linux,CentOS,sa,OP,mac,OSx,运维,开发-->
 
-##Linux 
+##操作系统OS 
+
+###Linux发行版本
 
 尚未整理
 
-###开发
+###Mac系统 
 
 尚未整理
 
-###版本管理
+###命令CMD
+
+[常用Linux系统命令TOP100](wiki/linux/cmd/top100_cmd.html)
+
+
+
+##运维管理OP
+
+###网络管理Net
+
+尚未整理
+
+###系统管理System
+
+尚未整理
+
+###网站管理Web
+
+尚未整理
+
+###报警监控Monitor
+
+尚未整理
+
+###集群管理Cluster
+
+尚未整理
+
+###网站架构Struct
+
+尚未整理
+
+###运维工具Tools
+
+
+
+##编程开发
+
+###Awk
+
+尚未整理
+
+###Shell
+
+[shell脚本速查](wiki/sw_develop/language/shell.html)
+
+###Python
+
+尚未整理
+
+###Go语言
+
+尚未整理
+
+###工具Tools
 
 [git](wiki/tool/versionmanage/git.html)
 
-###网站建设
+
+##网站建设
 
 [用markdown + pandoc + makefile + vimwiki + git(github)搭建wiki](wiki/tool/sitebuild/ohlinuxwiki.html)
 
@@ -25,11 +82,6 @@
 
 [github免输入密码](wiki/tool/sitebuild/github_sshkey.html)
 
-##软件开发
-
-###编程语言
-
-[shell脚本速查](wiki/sw_develop/language/shell.html)
 
 
 <!-- vim:set tw=0:-->
