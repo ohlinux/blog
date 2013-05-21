@@ -21,7 +21,7 @@ vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式�
     * template相关输出html时的模版
     * map 创建Vimwiki2HTML命令的快捷键
 
-```
+<pre>
     " vimwiki
     let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
     \ 'path_html': '~/Dropbox/blog/html/',
@@ -35,7 +35,7 @@ vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式�
 
     map <F4> <Plug>Vimwiki2HTML
     map <S-F4> <Plug>VimwikiAll2HTML
-```
+<pre>
 
 ## vimwiki语法
 

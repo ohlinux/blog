@@ -15,7 +15,7 @@
 
 ###网站建设
 
-[用markdown + pandoc + makefile + vimwiki+ git(github)搭建wiki](wiki/tool/sitebuild/ohlinuxwiki.html)
+[用markdown + pandoc + makefile + vimwiki + git(github)搭建wiki](wiki/tool/sitebuild/ohlinuxwiki.html)
 
 [markdown语法速查](wiki/tool/sitebuild/markdown_syntax.html)
 
