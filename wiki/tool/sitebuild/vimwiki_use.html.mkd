@@ -20,7 +20,8 @@ vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式�
     * ext 编辑的文件和enter产生的文件后缀是.mkd
     * template相关输出html时的模版
     * map 创建Vimwiki2HTML命令的快捷键
-     
+
+
 <pre name="code" class="brush: shell">
 
 " vimwiki配置
@@ -41,7 +42,9 @@ map <S-F4> <Plug>VimwikiAll2HTML
 
 ## vimwiki语法
 
-可以在这里下载:[vimwiki语法pdf](vimwikiqrc.pdf)
+可以在这里下载:
+
+[vimwiki语法pdf](vimwikiqrc.pdf)
 
 [vimwiki与markdown 的语法区别](markdown_syntax.html)
 
