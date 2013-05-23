@@ -50,4 +50,4 @@ pandoc ${PANDOC_FLAG} --from=markdown --to=html ${src} -o $dst # 调用pandoc编
 #sed -i -e 's/<a href="#TOC">\(.\+\)<\/a>/\1/g' $dst # 去掉pandoc产生的从标题向目录的链接
 #for mac
 sed -i '' 's/<a href="#TOC">\(.\+\)<\/a>/\1/g' $dst # 去掉pandoc产生的从标题向目录的链接
-#rm -f temp_head_keywords.html temp_title.html temp_pandoctpl.html # 删除临时文件
+rm -f temp_head_keywords.html temp_title.html temp_pandoctpl.html # 删除临时文件
