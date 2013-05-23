@@ -115,28 +115,26 @@
     * 配置中F4转html的基本可以不用了.
     * insert date是可以直接输入时间的一个命令,按F3
     * 我的vimrc配置文件仅供参考,里面还有很多其它的配置.
+     
+vim配置文件:
 
-<pre name="code" class="brush: shell" >
-
-" vimwiki配置
-let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
-\ 'path_html': '~/Dropbox/blog/html/',
-\ 'syntax': 'markdown',
-\ 'ext': '.mkd',
-\ 'template_path': '~/Dropbox/blog/',
-\ 'template_default': 'template',
-\ 'template_ext': '.html'}]
-let g:vimwiki_camel_case = 0
-"let g:vimwiki_file_exts = 'c, cpp,  txt, h, hpp, sh, awk'
-let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
-
-map <F4> <Plug>Vimwiki2HTML
-map <S-F4> <Plug>VimwikiAll2HTML
-"insert date插入日期
-nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>
-    
-</pre>
+        " vimwiki配置
+        let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
+        \ 'path_html': '~/Dropbox/blog/html/',
+        \ 'syntax': 'markdown',
+        \ 'ext': '.mkd',
+        \ 'template_path': '~/Dropbox/blog/',
+        \ 'template_default': 'template',
+        \ 'template_ext': '.html'}]
+        let g:vimwiki_camel_case = 0
+        "let g:vimwiki_file_exts = 'c, cpp,  txt, h, hpp, sh, awk'
+        let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+        
+        map <F4> <Plug>Vimwiki2HTML
+        map <S-F4> <Plug>VimwikiAll2HTML
+        "insert date插入日期
+        nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
+        imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>
 
 * vimwiki操作 
     * 通常正常操作,vim 进入之后,可以直接执行 \ww 就可以进入 index.mkd的主wiki,但wiki的链接都是使用path/test.html的链接记录的,如果按驾车直接进行的是test.html.mkd文件的编辑.

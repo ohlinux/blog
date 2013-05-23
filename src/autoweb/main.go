@@ -40,7 +40,7 @@ func Watcher(root string) error {
                     log.Println(event.Name)
                     i++
                     // 修改可能会有多次modify事件
-                case <-time.After(time.Second * 3):
+                case <-time.After(time.Second * 2):
                     break GetEvent
                 }
             }

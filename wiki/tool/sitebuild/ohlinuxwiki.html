@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="/style.css" type="text/css" />
 
 
-
+<title>用markdown + pandoc + vimwiki + makefile + git(github)搭建wiki</title>
+<meta name="keywords" content="mac,linux,vimwiki,markdown,pandoc,makefile,wiki,git,github">
 <!--Baidu tongji-->
 <script>
     var _hmt = _hmt || [];
@@ -46,7 +47,7 @@
     <p class="header_titleline">OhLinux Wiki运维空间</p>
     <p class="header_subline"><a href="/index.html">Wiki首页</a>     <a href="http://www.ohlinux.com">Blog首页</a></p>
 </div>
-
+<h1>用markdown + pandoc + vimwiki + makefile + git(github)搭建wiki</h1>
 
  <!--if(title)-->
 
@@ -221,28 +222,24 @@ github+jekyll
 <li>我的vimrc配置文件仅供参考,里面还有很多其它的配置.</li>
 </ul></li>
 </ul>
-<pre name="code" class="brush: shell" >
-
-" vimwiki配置
-let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
-\ 'path_html': '~/Dropbox/blog/html/',
-\ 'syntax': 'markdown',
-\ 'ext': '.mkd',
-\ 'template_path': '~/Dropbox/blog/',
-\ 'template_default': 'template',
-\ 'template_ext': '.html'}]
-let g:vimwiki_camel_case = 0
-"let g:vimwiki_file_exts = 'c, cpp,  txt, h, hpp, sh, awk'
-let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
-
-map <F4> <Plug>Vimwiki2HTML
-map <S-F4> <Plug>VimwikiAll2HTML
-"insert date插入日期
-nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>
+<p>vim配置文件:</p>
+<pre><code>    &quot; vimwiki配置
+    let g:vimwiki_list = [{&#39;path&#39;: &#39;~/Dropbox/blog/&#39;,
+    \ &#39;path_html&#39;: &#39;~/Dropbox/blog/html/&#39;,
+    \ &#39;syntax&#39;: &#39;markdown&#39;,
+    \ &#39;ext&#39;: &#39;.mkd&#39;,
+    \ &#39;template_path&#39;: &#39;~/Dropbox/blog/&#39;,
+    \ &#39;template_default&#39;: &#39;template&#39;,
+    \ &#39;template_ext&#39;: &#39;.html&#39;}]
+    let g:vimwiki_camel_case = 0
+    &quot;let g:vimwiki_file_exts = &#39;c, cpp,  txt, h, hpp, sh, awk&#39;
+    let g:vimwiki_ext2syntax = {&#39;.md&#39;:&#39;markdown&#39;,&#39;.markdown&#39;:&#39;markdown&#39;,&#39;.mdown&#39;:&#39;markdown&#39;,&#39;.mkd&#39;:&#39;markdown&#39;}
     
-</pre>
-
+    map &lt;F4&gt; &lt;Plug&gt;Vimwiki2HTML
+    map &lt;S-F4&gt; &lt;Plug&gt;VimwikiAll2HTML
+    &quot;insert date插入日期
+    nmap &lt;F3&gt; a&lt;C-R&gt;=strftime(&quot;%Y-%m-%d %I:%M %p&quot;)&lt;CR&gt;&lt;Esc&gt;
+    imap &lt;F3&gt; &lt;C-R&gt;=strftime(&quot;%Y-%m-%d %I:%M %p&quot;)&lt;CR&gt;</code></pre>
 <ul>
 <li>vimwiki操作
 <ul>

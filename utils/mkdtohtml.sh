@@ -20,9 +20,9 @@ PANDOC_FLAG+=" --include-after-body pageframe/footer.html"
 
 # 预处理
 touch temp_head_keywords.html temp_title.html # 生成临时文件
-sed -n -e "s/<!---title:\(.\+\)-->/<title>\1<\/title>/p" $src > temp_head_keywords.html # 生成<head>中的标题标签
-sed -n -e "s/<!---keywords:\(.\+\)-->/<meta name=\"keywords\" content=\"\1\">/p" $src >> temp_head_keywords.html # 生成<head>中的关键字标签
-sed -n -e "s/<!---title:\(.\+\)-->/<h1>\1<\/h1>/p" $src > temp_title.html # 生成<body>中的标题标签<h1>
+sed -n -e "1,2s/<!---title:\(.*\)-->/<title>\1<\/title>/p" $src > temp_head_keywords.html # 生成<head>中的标题标签
+sed -n -e "1,2s/<!---keywords:\(.*\)-->/<meta name=\"keywords\" content=\"\1\">/p" $src >> temp_head_keywords.html # 生成<head>中的关键字标签
+sed -n -e "1,2s/<!---title:\(.*\)-->/<h1>\1<\/h1>/p" $src > temp_title.html # 生成<body>中的标题标签<h1>
 cp utils/pandoctpl.html temp_pandoctpl.html
 # WIKI_TOPDIR替换为相对地址 {{{
 relative_dir=""
@@ -50,4 +50,4 @@ pandoc ${PANDOC_FLAG} --from=markdown --to=html ${src} -o $dst # 调用pandoc编
 #sed -i -e 's/<a href="#TOC">\(.\+\)<\/a>/\1/g' $dst # 去掉pandoc产生的从标题向目录的链接
 #for mac
 sed -i '' 's/<a href="#TOC">\(.\+\)<\/a>/\1/g' $dst # 去掉pandoc产生的从标题向目录的链接
-rm -f temp_head_keywords.html temp_title.html temp_pandoctpl.html # 删除临时文件
+#rm -f temp_head_keywords.html temp_title.html temp_pandoctpl.html # 删除临时文件

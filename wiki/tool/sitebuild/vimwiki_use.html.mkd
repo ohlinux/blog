@@ -21,24 +21,22 @@ vimwiki 的安装同其他vim插件一样。有 zip 包和 vba 包两种格式�
     * template相关输出html时的模版
     * map 创建Vimwiki2HTML命令的快捷键
 
+vim配置文件:
 
-<pre name="code" class="brush: shell">
+    " vimwiki配置
+    let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
+    \ 'path_html': '~/Dropbox/blog/html/',
+    \ 'syntax': 'markdown',
+    \ 'ext': '.mkd',
+    \ 'template_path': '~/Dropbox/blog/',
+    \ 'template_default': 'template',
+    \ 'template_ext': '.html'}]
+    let g:vimwiki_camel_case = 0
+    let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+    
+    map <F4> <Plug>Vimwiki2HTML
+    map <S-F4> <Plug>VimwikiAll2HTML
 
-" vimwiki配置
-let g:vimwiki_list = [{'path': '~/Dropbox/blog/',
-\ 'path_html': '~/Dropbox/blog/html/',
-\ 'syntax': 'markdown',
-\ 'ext': '.mkd',
-\ 'template_path': '~/Dropbox/blog/',
-\ 'template_default': 'template',
-\ 'template_ext': '.html'}]
-let g:vimwiki_camel_case = 0
-let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
-
-map <F4> <Plug>Vimwiki2HTML
-map <S-F4> <Plug>VimwikiAll2HTML
-
-</pre>
 
 ## vimwiki语法
 
