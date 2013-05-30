@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<link rel="stylesheet" href="/style.css" type="text/css" />
+
+
+<title>非root用户搭建rsync服务</title>
+<meta name="keywords" content="mac,linux,rsync">
+<!--Baidu tongji-->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c33f8eb1bbd2cf29ae19a3492ccca0c6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!--Baidu tongji-->
+
+<!--SyntaxHighlighter
+<script type="text/javascript" src="/scripts/vimwiki.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/scripts/shSyntax.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shThemeMidnight.css"/>
+<link type="text/css" rel="stylesheet" href="/styles/shCore.css"/>
+<script type="text/javascript">
+    SyntaxHighlighter.config.clipboardSwf = "/scripts/clipboard.swf";
+    SyntaxHighlighter.all();
+</script>
+-->
+
+</head>
+
+
+<body>
+<div id="all">
+
+<div id="all">
+    <div id="header">
+        <ul id="top-nav">
+            <li>
+            <a href="/index.html">Wiki首页</a>
+            </li>
+            <li>
+            <a href="http://www.ohlinux.com">Blog首页</a>
+            </li>
+            <li>
+            <a href="/about.html">about</a>
+            </li>
+        </ul>
+</div>
+
+
+
+ <!--if(title)-->
+
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#优点">优点</a></li>
+<li><a href="#配置文件">配置文件</a></li>
+<li><a href="#启动服务">启动服务</a></li>
+<li><a href="#客户端发送">客户端发送</a></li>
+<li><a href="#遇到的问题">遇到的问题</a></li>
+</ul>
+</div>
+ <!--if(toc)-->
+
+<!---title:非root用户搭建rsync服务-->
+<!---keywords:mac,linux,rsync-->
+
+<p>我们一般如果有root权限配置,利用xinetd来配置rsync服务是很常用的一种方法.但在安全的系统里面都是使用其它账号,又有同步文件的需求,不能使用ssh,rsync服务是一个不错的选择.</p>
+<h2 id="优点"><a href="#优点">优点</a></h2>
+<ul>
+<li>简单明了.</li>
+<li>无需ssh,可以自己定义端口.</li>
+<li>保持rsync的特性,文件的时间权限全一样.</li>
+<li>传输快速.</li>
+<li>可以进行检查和增量同步.</li>
+</ul>
+<h2 id="配置文件"><a href="#配置文件">配置文件</a></h2>
+<pre><code>log file=/tmp/rsyncd.log
+hosts allow = 10.0.0.0/8  127.0.0.1 
+hosts deny = * 
+list = true
+read only = no
+use chroot = false
+
+[temp_copy]
+path = /home/temp_copy
+uid = user
+gid = group</code></pre>
+<h2 id="启动服务"><a href="#启动服务">启动服务</a></h2>
+<pre><code>/usr/bin/rsync --daemon -v --port=8090 --config=rsyncd.conf</code></pre>
+<ul>
+<li>问题: 远程ssh执行这个不会成功,这个原因还没有具体看.</li>
+</ul>
+<h2 id="客户端发送"><a href="#客户端发送">客户端发送</a></h2>
+<pre><code>rsync -av  --exclude=status/*  --exclude=log/*  --port=8090  -R ./ x.x.x.x::temp_copy</code></pre>
+<ul>
+<li>注意是在当前目录使用 -R ./</li>
+<li>如果不想传输,只想检查可以添加 -n</li>
+</ul>
+<h2 id="遇到的问题"><a href="#遇到的问题">遇到的问题</a></h2>
+<ul>
+<li>问题1: @ERROR: chroot failed
+<ul>
+<li>解决:配置添加 use chroot = false</li>
+<li>相关链接: <a href="http://stackoverflow.com/questions/16267507/rsync-server-fails">参考地址</a></li>
+</ul></li>
+<li>问题2: @ERROR: chdir failed
+<ul>
+<li>解决: 配置文件 里面的目录没有创建,或者相应的权限不对.</li>
+</ul></li>
+</ul>
+
+<div id="cse"></div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1789306" async=""></script>
+<!-- UY END -->
+<div id="footer">
+    <p class="footer_subline">Contact: ajian521@gmail.com</p>
+</div>
+</div> <!--all-->
+</body>
+</html>

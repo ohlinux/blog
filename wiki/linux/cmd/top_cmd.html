@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<link rel="stylesheet" href="/style.css" type="text/css" />
+
+
+<title>Linux常用命令TOP</title>
+<!--Baidu tongji-->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c33f8eb1bbd2cf29ae19a3492ccca0c6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!--Baidu tongji-->
+
+<!--SyntaxHighlighter
+<script type="text/javascript" src="/scripts/vimwiki.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/scripts/shSyntax.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shThemeMidnight.css"/>
+<link type="text/css" rel="stylesheet" href="/styles/shCore.css"/>
+<script type="text/javascript">
+    SyntaxHighlighter.config.clipboardSwf = "/scripts/clipboard.swf";
+    SyntaxHighlighter.all();
+</script>
+-->
+
+</head>
+
+
+<body>
+<div id="all">
+
+<div id="all">
+    <div id="header">
+        <ul id="top-nav">
+            <li>
+            <a href="/index.html">Wiki首页</a>
+            </li>
+            <li>
+            <a href="http://www.ohlinux.com">Blog首页</a>
+            </li>
+            <li>
+            <a href="/about.html">about</a>
+            </li>
+        </ul>
+</div>
+
+<p>date: 2013-05-29</p>
+
+ <!--if(title)-->
+
+<p>目录:</p>
+<div id="TOC">
+<ul>
+<li><a href="#终端操作">终端操作</a></li>
+<li><a href="#文件目录操作">文件目录操作</a></li>
+<li><a href="#查看系统">查看系统</a></li>
+<li><a href="#文件操作">文件操作</a></li>
+<li><a href="#进程操作">进程操作</a></li>
+<li><a href="#用户操作">用户操作</a></li>
+<li><a href="#网络操作">网络操作</a></li>
+</ul>
+</div>
+ <!--if(toc)-->
+
+<!---title:Linux常用命令TOP-->
+<!---keyword:Linux,OP,shell,cmd,命令-->
+<!---date:2013-05-29-->
+
+<h2 id="终端操作"><a href="#终端操作">终端操作</a></h2>
+<pre><code>ctrl+a  //命令行下，光标称动到开头
+ctrl+e  //命令行下，光标移动结
+clear   //清屏</code></pre>
+<h2 id="文件目录操作"><a href="#文件目录操作">文件目录操作</a></h2>
+<pre><code>ls -lrt //按时间的倒序排序
+cd - //返回上次目录
+du -sh //查看文件或目录大小总和
+tree //显示文件目录树</code></pre>
+<h2 id="查看系统"><a href="#查看系统">查看系统</a></h2>
+<pre><code>uname -a // 查看系统版本
+uptime //查看系统运行时间,当前登陆数负载情况
+free -m //以MB为单位显示内存
+env //查看所有的环境系统
+histroy -c //清空历史命令
+vmstat 5 //每5显示一下次系统信息，cpu,memory,i/o等</code></pre>
+<h2 id="文件操作"><a href="#文件操作">文件操作</a></h2>
+<pre><code>cat -n file //内容的前面会显示行号
+chattr +i file  //只读，root用户也没法对其进行修改
+lsattr file //查看文件属性
+wc -l //统计行数
+wc -w 统计单词
+cmp file1 file2   //文件内容比对
+diff file1 file2 //文件内容对比
+dos2unix file1 //转换文件从windows格式到*nix格式</code></pre>
+<h2 id="进程操作"><a href="#进程操作">进程操作</a></h2>
+<pre><code>time command //查看命令运行时间
+top 后 在shift + P //所占进程的排序显示
+top 后 在shift + M //所占内存的排序显示
+lsof -i :22 //知道22端口现在运行什么程序
+lsof -c abc //显示abc进程现在打开的文件
+lsof -p 12  //看进程号为12的进程打开了哪些文件</code></pre>
+<h2 id="用户操作"><a href="#用户操作">用户操作</a></h2>
+<pre><code>last //显示成功登陆的用户
+lastb //登录不成功用户记录</code></pre>
+<h2 id="网络操作"><a href="#网络操作">网络操作</a></h2>
+<pre><code>route //查看路由信息
+ifup //开启网卡
+ifdown //关闭网卡
+route del -net 172.168.0.0 netmask 255.255.0.0 dev eth0 //删除 172.168这个网段
+route add -net 172.168.10.0 netmask 255.255.255.0 dev eth0 //增加一个路由
+netstat -tunl //列出监听的网络服务端口
+netstat -tun //列出已连接的网络服务端口
+nmap -sP 172.30.4.0/24  //在这个网段内有多少用户在我的主机上操作，一个不错的安全检查工具
+rsync -P  //同步时显示进度
+iptraf -g  //查看各个接口的流量</code></pre>
+<p>echo &quot;aa&quot; &gt; test.txt 和 echo &quot;bb&quot; &gt;&gt; test.txt //&gt;将原文件清空，并且内容写入到文件中，&gt;&gt;将内容放到文件的尾部 chmod go+w -R /home/zhangy //给组用户和其他用户添加写的权限 echo '1+2'|bc -l //数学运算 badblocks -s /dev/sda //坏道扫描时显示进度</p>
+<p>umount -n /mnt/hda2 //强制卸载 echo <span class="math">[5 * 5] /  / <em>算</em><em>术</em><em>运</em><em>算</em><em>e</em><em>c</em><em>h</em><em>o</em></span>((5*5)) //算术运算 eval ls;ps aux|grep httpd //这二个命令都能执行 加法运算 ot@krlcgcms01 mytest]# let a=34+3; ot@krlcgcms01 mytest]# echo <span class="math"><em>a</em>; <em>e</em><em>x</em><em>p</em><em>o</em><em>r</em><em>t</em> /  / <em>查</em><em>看</em><em>所</em><em>有</em><em>环</em><em>境</em><em>变</em><em>量</em><em>e</em><em>c</em><em>h</em><em>o</em></span>PATH //查看单个变量 echo 23423 |awk --re-interval '/[0-9]{3,}/' //如果不加re-interval的话，不显示 cal //得到一个整齐的日历格式 echo &quot;AaDCbd23&quot; |tr &quot;[A-Z]&quot; &quot;[a-z]&quot; 大写变小写，echo &quot;AaDCbdc23&quot; |tr -c b-d = 将b-d之外的字符串替换成= echo &quot;ADSF&quot; | iconv -f UTF8 -t GBK //把字符由utf8转成gbk -f是from和简写，-t好像terminal的简写 cat /etc/passwd |awk -F: '{print $1}' //查看系统中所有用户 cat /etc/group //查看系统中所有的组 groups //查前当前用户所在的，所有组 usermod -g 组名 用户 //这种方式是覆盖的方式，用的时候要小心，如果用户A性于mysql usermod -g php mysql这样的话只 php了， usermod -G 组名 用户 //这种方式是增加的方式，如果用户A性于mysql usermod -g php mysql这样的话，mysql就属于2个组了 bc //进入数学计算中去 umask 003 u权限是7,g权限是7，其他用户是4，也就是774，777-003=774 mkfs -t vfat /dev/hda6 //将移动硬盘里面的一个分区格式化成vfat格式 mount /dev/cdrom /media/cdrom //挂载cdrom getent group 532 //通过组ID,来查找组信息 dump -S /dev/sda2 //查看一下要备份/dev/sda2所要的容量 dump -0j -f /dev/hda2/sda2_bak.dump.bz2 /dev/sda2 //将sda2进行备份并压缩 restore -t -f /dev/hda2/sda2_bak.dump //查看备份信息 restore -r -f /dev/hda2/sda2_bak.dump //还原备份 fc-list //查看系统中安装的字体 find ./ -type f -exec grep -q &quot;root&quot; {} ; -exec echo {} ; //查找目录下文件所包涵的字符串 iptraf -g //查看各个接口的流量 ostat -d -x /dev/sda2 2 //用iostat查看磁盘/dev/sda2的磁盘i/o情况，每两秒刷新一次 paste -sd '|||' test //文件的每4行转换成1行，并用|隔开。 vgdisplay //查看系统中的可用空间 lvextend -L+20G /dev/tank/part1 //向part1这个分区增加20G的空间 lvresize -L-10G /dev/tank/part2 //向part2这个分区减少10G的空间 pvdisplay //查看磁盘信息 mplayer -loop 10 /mnt/song/music/花儿开了.mp3 //循环播放10遍 pacman -S firefox -nd //nd去掉依赖 wget -c //断点下载 chroot /mnt/ubuntu //改变根目录到/mnt/ubuntu</p>
+
+<div id="cse"></div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1789306" async=""></script>
+<!-- UY END -->
+<div id="footer">
+    <p class="footer_subline">Contact: ajian521@gmail.com</p>
+</div>
+</div> <!--all-->
+</body>
+</html>

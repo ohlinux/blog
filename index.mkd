@@ -1,4 +1,4 @@
-<!---title:Ohlinux 运维-首页-->
+<!---title:Ohlinux wiki 运维 OP -首页-->
 <!---keywords:Linux,CentOS,sa,OP,mac,OSx,运维,开发-->
 
 ##网站建设
@@ -25,9 +25,7 @@
 
 ###命令CMD
 
-[常用Linux系统命令TOP100](wiki/linux/cmd/top100_cmd.html)
-
-
+[常用Linux系统命令TOP100](wiki/linux/cmd/top_cmd.html)
 
 ##运维管理OP
 
@@ -57,7 +55,7 @@
 
 ###运维工具OPTools
 
-尚未整理
+[非root用户搭建rsync服务](wiki/op/optools/rsync_notroot.html)
 
 ##编程开发
 

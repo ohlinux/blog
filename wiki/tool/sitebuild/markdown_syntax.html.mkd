@@ -1,6 +1,6 @@
 <!---title:vimwiki与markdown语法速查-->
 <!---keywords:语法,markdown,vimwiki,使用-->
-
+<!---date:2013-05-30-->
 ##标题 
 
 <table>

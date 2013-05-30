@@ -1,5 +1,6 @@
 <!---title:github免输入密码-->
 <!---keywords:github,免输入密码,ssh-keygen-->
+<!---date:2013.05.29-->
 
 
 ##生成ssh key

@@ -1,0 +1,49 @@
+<!---title:非root用户搭建rsync服务-->
+<!---keywords:mac,linux,rsync-->
+
+我们一般如果有root权限配置,利用xinetd来配置rsync服务是很常用的一种方法.但在安全的系统里面都是使用其它账号,又有同步文件的需求,不能使用ssh,rsync服务是一个不错的选择.
+
+## 优点
+
+* 简单明了.
+* 无需ssh,可以自己定义端口.
+* 保持rsync的特性,文件的时间权限全一样.
+* 传输快速.
+* 可以进行检查和增量同步.
+
+## 配置文件
+
+    log file=/tmp/rsyncd.log
+    hosts allow = 10.0.0.0/8  127.0.0.1 
+    hosts deny = * 
+    list = true
+    read only = no
+    use chroot = false
+
+    [temp_copy]
+    path = /home/temp_copy
+    uid = user
+    gid = group
+
+## 启动服务
+
+    /usr/bin/rsync --daemon -v --port=8090 --config=rsyncd.conf
+    
+* 问题: 远程ssh执行这个不会成功,这个原因还没有具体看.
+
+## 客户端发送
+
+    rsync -av  --exclude=status/*  --exclude=log/*  --port=8090  -R ./ x.x.x.x::temp_copy
+
+* 注意是在当前目录使用 -R ./
+* 如果不想传输,只想检查可以添加 -n
+
+## 遇到的问题
+
+* 问题1: @ERROR: chroot failed 
+    * 解决:配置添加 use chroot = false
+    * 相关链接: [参考地址](http://stackoverflow.com/questions/16267507/rsync-server-fails)
+    
+* 问题2: @ERROR: chdir failed
+    * 解决: 配置文件 里面的目录没有创建,或者相应的权限不对.
+

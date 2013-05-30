@@ -1,5 +1,6 @@
 <!---title:VimWiki的安装和使用-->
 <!---keywords:mac,linux,vimwiki-->
+<!---date:2013-05-29-->
 
 Vim 里有个 vimwiki 插件，正在使用 Vim 的同学一定有所耳闻。有了vimwiki， 搭配Vim本身强大的编辑功能，你就拥有了一个快速、轻巧、功能强大的个人笔记本。通过 vimwiki 输出HTML页面，你还能方便地和别人分享自己的知识积累。该文章摘自源文[用vimwiki搭建自己的维基世界](http://wiki.ktmud.com/tips/vim/vimwiki-guide.html).取其精华和自己的理解,用于了这个wiki的搭建.
 

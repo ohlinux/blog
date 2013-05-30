@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -11,43 +10,54 @@
 <link rel="stylesheet" href="/style.css" type="text/css" />
 
 
-<title>Ohlinux 运维-首页</title>
+<title>Ohlinux wiki 运维 OP -首页</title>
 <meta name="keywords" content="Linux,CentOS,sa,OP,mac,OSx,运维,开发">
 <!--Baidu tongji-->
 <script>
     var _hmt = _hmt || [];
     (function() {
-          var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?25f7b92ccff21a1de8240b6abfebe77a";
-              var s = document.getElementsByTagName("script")[0]; 
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c33f8eb1bbd2cf29ae19a3492ccca0c6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 <!--Baidu tongji-->
 
-<!--SyntaxHighlighter-->
-<script type="text/javascript" src="/scripts/shCore.js"></script>
-<script type="text/javascript" src="/scripts/shBrushPython.js"></script>
-<script type="text/javascript" src="/scripts/shBrushCpp.js"></script>
-<script type="text/javascript" src="/scripts/shBrushBash.js"></script>
-<script type="text/javascript" src="/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="/scripts/shBrushPhp.js"></script>
-<script type="text/javascript" src="/scripts/shBrushSql.js"></script>
-<script type="text/javascript" src="/scripts/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="/styles/shCoreFadeToGrey.css"/>
-<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!--SyntaxHighlighter
+<script type="text/javascript" src="/scripts/vimwiki.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/scripts/shSyntax.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles/shThemeMidnight.css"/>
+<link type="text/css" rel="stylesheet" href="/styles/shCore.css"/>
+<script type="text/javascript">
+    SyntaxHighlighter.config.clipboardSwf = "/scripts/clipboard.swf";
+    SyntaxHighlighter.all();
+</script>
+-->
 
 </head>
 
 
 <body>
-<div id="wrapper">
+<div id="all">
 
-<div id="header">
-    <p class="header_titleline">OhLinux Wiki运维空间</p>
-    <p class="header_subline"><a href="/index.html">Wiki首页</a>     <a href="http://www.ohlinux.com">Blog首页</a></p>
+<div id="all">
+    <div id="header">
+        <ul id="top-nav">
+            <li>
+            <a href="/index.html">Wiki首页</a>
+            </li>
+            <li>
+            <a href="http://www.ohlinux.com">Blog首页</a>
+            </li>
+            <li>
+            <a href="/about.html">about</a>
+            </li>
+        </ul>
 </div>
-<h1>Ohlinux 运维-首页</h1>
+
+
 
  <!--if(title)-->
 
@@ -80,7 +90,7 @@
 </div>
  <!--if(toc)-->
 
-<!---title:Ohlinux 运维-首页-->
+<!---title:Ohlinux wiki 运维 OP -首页-->
 <!---keywords:Linux,CentOS,sa,OP,mac,OSx,运维,开发-->
 
 <h2 id="网站建设"><a href="#网站建设">网站建设</a></h2>
@@ -95,7 +105,7 @@
 <h3 id="mac系统"><a href="#mac系统">Mac系统</a></h3>
 <p>尚未整理</p>
 <h3 id="命令cmd"><a href="#命令cmd">命令CMD</a></h3>
-<p><a href="wiki/linux/cmd/top100_cmd.html">常用Linux系统命令TOP100</a></p>
+<p><a href="wiki/linux/cmd/top_cmd.html">常用Linux系统命令TOP100</a></p>
 <h2 id="运维管理op"><a href="#运维管理op">运维管理OP</a></h2>
 <h3 id="网络管理net"><a href="#网络管理net">网络管理Net</a></h3>
 <p>尚未整理</p>
@@ -110,7 +120,7 @@
 <h3 id="网站架构struct"><a href="#网站架构struct">网站架构Struct</a></h3>
 <p>尚未整理</p>
 <h3 id="运维工具optools"><a href="#运维工具optools">运维工具OPTools</a></h3>
-<p>尚未整理</p>
+<p><a href="wiki/op/optools/rsync_notroot.html">非root用户搭建rsync服务</a></p>
 <h2 id="编程开发"><a href="#编程开发">编程开发</a></h2>
 <h3 id="awk"><a href="#awk">Awk</a></h3>
 <p>尚未整理</p>
@@ -125,11 +135,14 @@
 <!-- vim:set tw=0:-->
 
 
+<div id="cse"></div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1789306" async=""></script>
+<!-- UY END -->
 <div id="footer">
-    <p class="footer_titleline">Human knowledge belongs to the world</p>
     <p class="footer_subline">Contact: ajian521@gmail.com</p>
-    <p class="footer_subline">Powerby:Mike,Modify:Ajian,Put on @github.com</p>
 </div>
-</div> <!--wrapper-->
+</div> <!--all-->
 </body>
 </html>
