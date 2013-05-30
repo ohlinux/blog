@@ -60,6 +60,13 @@ h2 {
     padding-left: 10px;
 
 }
+#date{
+    color: #fd5;
+    margin-top: 1em;
+    border-top: 1px solid #666666;
+    background: #0B323F;
+    padding-left: 10px;
+}
 h3 {
     font-size: 1.22em;
     color: #df5;
@@ -85,7 +92,7 @@ h6 {
     font-size: 1.0em;
 
 }
-p, table, ul, ol, dl,#liuyan{
+p,table, ul, ol, dl,#liuyan{
     margin: 0.5em 0 1em;
     padding-left: 30px;
 }
@@ -151,6 +158,7 @@ pre{
     margin-left: 1em;
     padding: 0.4em 0.8em;
 }
+
 table {
     border-collapse: collapse;
 }
