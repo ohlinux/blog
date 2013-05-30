@@ -85,9 +85,14 @@ h6 {
     font-size: 1.0em;
 
 }
-p, table, ul, ol, dl {
+p, table, ul, ol, dl,#liuyan{
     margin: 0.5em 0 1em;
     padding-left: 30px;
+}
+#liuyan{
+    margin: 0.5em 0 1em;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 ul ul, ul ol, ol ol, ol ul {
@@ -141,7 +146,7 @@ blockquote:hover, pre:hover {
     background: rgba(255,30,120,0.25);
 }
 
-pre {
+pre{
     border-left: 1px solid #c26;
     margin-left: 1em;
     padding: 0.4em 0.8em;
