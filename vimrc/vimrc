@@ -517,3 +517,58 @@ autocmd filetype go set dictionary=~/.vim/bundle/VimForGo/go.dict
 "    endwhile
 "    call AddTitle()
 "endfunction
+"
+
+"if exists("loaded_MikeWiki")
+"    finish
+"endif
+"let loaded_MikeWiki = 1
+"
+"func! MikewikiEnterWikiPage()
+"    let l:lineBuffer = expand("<cWORD>")                                                " 获取光标所在处的链接字符串
+"    let l:localLink = substitute(l:lineBuffer, '.*\](\(.*\).html).*', '\1.mkd', "g")    " 将链接中的.html改为.mkd.
+"    let l:hasLink = match(l:lineBuffer, '.\+.html')                                     " 匹配是否存在.html...
+"    if l:hasLink == 0                                                                   " ...如果存在才跳转
+"        " 检测目标文件所在文件夹是否存在, 如果不存在则创建
+"        let l:localLinkDir = substitute(system("dirname ".l:localLink), '\n', '', "g")
+"        let l:localLinkDirExist = isdirectory(l:localLinkDir)
+"        if !l:localLinkDirExist
+"            " exec "!mkdir -p ".l:localLinkDir           
+"            exec "silent !mkdir -p ".l:localLinkDir
+"            "这里的mkdir如果使用的不是linux可以自行修改为别的命令.
+"            " ^ 此处我故意没加silent, 所以创建时会停在提示栏, 按任意键才继续, 因为个人认为创建目录是一件谨慎的事.
+"            " 如果觉得麻烦, 可以改为, 就自动继续了.
+"        endif
+"
+"        exec "vi ".l:localLink                        
+"        " 打开(跳转到)目标文件xxx/xxxx.mkd
+"    endif
+"endfunc
+"nmap <buffer> <cr> :call MikewikiEnterWikiPage()<CR>   
+"    " 映射为回车, 可以自行修改
+"
+"" ------------------------------------------------------------------------------
+" 更新日期: 会将.mkd文件中的<!---date-->或者<!---date:yyyy.mm.dd-->替换为当前日期
+" 有了这个就很容易实现在make时候向html中更新日期.
+func! MikewikiUpdateDatetime()
+    exec "norm mz"
+    exec '3 s/\(.*\)/<!---date:'.strftime("%Y-%m-%d")."-->"."/e"
+                                                                " ^ 如果需要时间可以加上 %H:%M:%S
+    exec "norm `z"
+endfunc
+au BufWritePre *.mkd call MikewikiUpdateDatetime()
+
+" make, 判断如果当前目录下存在makefile(注意大小写)则执行外部命令make.
+let g:vimwiki_path="~/Dropbox/blog"
+func! MikewikiMake()
+  "  if filereadable(g:vimwiki_path."/makefile")
+        exec "cd ".g:vimwiki_path                       
+        exec "make"
+       "  silent !make
+       " exec "silent !cd ".g:vimwiki_path
+       " exec "silent !make"
+  "  endif
+endfunc
+
+" 设置为在*.mkd后缀的文件, 当保存时候起效果:
+au BufWritePost *.mkd call MikewikiMake()
