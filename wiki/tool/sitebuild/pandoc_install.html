@@ -34,7 +34,7 @@
         </ul>
 </div>
 
-
+<p>date: 2013-05-31</p>
 
  <!--if(title)-->
 
@@ -44,6 +44,7 @@
 <li><a href="#pandoc安装">Pandoc安装</a></li>
 <li><a href="#pandoc文档转换">Pandoc文档转换</a><ul>
 <li><a href="#markdown转htmlword与pdf">Markdown转html、word与PDF</a></li>
+<li><a href="#markdown转pdf">Markdown转PDF</a></li>
 <li><a href="#pandoc生成epubhtml与在线电子书">Pandoc生成epub、html与在线电子书</a></li>
 </ul></li>
 </ul>
@@ -52,6 +53,7 @@
 
 <!---title:pandoc安装和使用-->
 <!---keywords:mac,linux,markdown,pandoc-->
+<!---date:2013-05-31-->
 
 <p>我们都知道markdown的格式很简单,主要是让写者可以专注文字而不是格式,但格式我们少不了,需要html pdf ppt等输出,这个时候pandoc是一个很好选择</p>
 <p>haskell 是什么？一种编程语言。每位资深的开发者学习它，都会有些不知所措，因为，它的编程思路不同于通常意义上类似于C#、Python、Java这些流行的编程语言。它来自一群高智商的开发者的贡献，据说人人有PHD学位，是函数式编程语言的典范。当然，Pandoc作者John MacFarlane也不例外，他是一位来自美国加州大学伯克利分校的哲学教授，研究的是认识论这类高深议题:D</p>
@@ -62,42 +64,33 @@
 </ul>
 <p>下载软件，找到相应操作系统对应的文件，然后按照默认点击即可。如果你不需要学习Haskell，请使用此种办法，好处多多。</p>
 <ul>
-<li>更技术的安装办法（学习Haskell者使用）</li>
-</ul>
+<li><p>更技术的安装办法（学习Haskell者使用）</p>
 <p>一个通用的安装方式是,安装Haskell平台.然后再通过Haskell平台安装Pandoc。步骤如下：</p>
-<pre><code>* 安装Haskell平台
-
-如果之前，你通过其它方式，安装过Haskell的运行平台，需要卸载，Mac下命令如下：
-
-/Library/Haskell/bin/uninstall-hs
-然后，系统会找到你之前安装过的版本，如7.4.1、7.0.4，运行下列命令：
-
-sudo uninstall-hs only 7.0.4 --remove sudo uninstall-hs only 7.4.1
---remove
-下载Haskell平台，下载地址是：http://hackage.haskell.org/platform/
-
-选择你相应的操作系统平台即可。
-
-然后下载完之后，一路按照默认安装即可。配置在.bashrc或者修改.zshrc文件。作者使用的是zshrc配置文件。因此，在\~/.zshrc文件末尾增加一行：
-
-export PATH=&quot;$HOME/Library/Haskell/bin:$PATH&quot;
-这样可以直接通过shell来控制Haskell。打开终端，如iterm2，输入：
-
-cabal update
-cabal是类似于Ruby下的rubygems一样的包管理器。cabal程序会链接到服务器http://hackage.haskell.org/packages/archive/上下载相应的包信息。下载时间会较长，请耐心等候，并检查本机与HaskellDB服务器的连接速度。
-
-* 安装pandoc
-
-运行：
-
-cabal install pandoc
-编译安装时间较漫长.</code></pre>
+<ul>
+<li><p>安装Haskell平台</p>
+<p>如果之前，你通过其它方式，安装过Haskell的运行平台，需要卸载，Mac下命令如下：</p>
+<pre><code>/Library/Haskell/bin/uninstall-hs</code></pre>
+<p>然后，系统会找到你之前安装过的版本，如7.4.1、7.0.4，运行下列命令：</p>
+<pre><code>sudo uninstall-hs only 7.0.4 --remove sudo uninstall-hs only 7.4.1</code></pre>
+<p>下载Haskell平台，下载地址是：http://hackage.haskell.org/platform/</p>
+<p>选择你相应的操作系统平台即可。</p>
+<p>然后下载完之后，一路按照默认安装即可。配置在.bashrc或者修改.zshrc文件。作者使用的是zshrc配置文件。因此，在~/.zshrc文件末尾增加一行：</p>
+<p>export PATH=&quot;<span class="math"><em>H</em><em>O</em><em>M</em><em>E</em> / <em>L</em><em>i</em><em>b</em><em>r</em><em>a</em><em>r</em><em>y</em> / <em>H</em><em>a</em><em>s</em><em>k</em><em>e</em><em>l</em><em>l</em> / <em>b</em><em>i</em><em>n</em>: </span>PATH&quot; 这样可以直接通过shell来控制Haskell。打开终端，如iterm2，输入：</p>
+<pre><code>cabal update</code></pre>
+<p>cabal是类似于Ruby下的rubygems一样的包管理器。cabal程序会链接到服务器http://hackage.haskell.org/packages/archive/上下载相应的包信息。下载时间会较长，请耐心等候，并检查本机与HaskellDB服务器的连接速度。</p></li>
+<li><p>安装pandoc</p>
+<p>运行：</p>
+<p>cabal install pandoc 编译安装时间较漫长.</p></li>
+</ul></li>
+</ul>
 <h1 id="pandoc文档转换"><a href="#pandoc文档转换">Pandoc文档转换</a></h1>
 <h2 id="markdown转htmlword与pdf"><a href="#markdown转htmlword与pdf">Markdown转html、word与PDF</a></h2>
 <p>如下例所示：</p>
 <p>转html格式</p>
-<p>pandoc 01-chapter2.markdown -o chapter2.html -c Github.css 转word格式</p>
-<p>pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css ## Markdown转PDF</p>
+<pre><code>pandoc 01-chapter2.markdown -o chapter2.html -c Github.css</code></pre>
+<p>转word格式</p>
+<pre><code>pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css</code></pre>
+<h2 id="markdown转pdf"><a href="#markdown转pdf">Markdown转PDF</a></h2>
 <p>安装LaTex</p>
 <p>待补。</p>
 <p>转pdf格式</p>
@@ -111,8 +104,9 @@ cabal install pandoc
 <p>npm -v 如果如我一样，使用的是zsh。在.zshrc文件中添加nodejs的路径。</p>
 <p>mate ~/.zshrc 在文件末尾添加：</p>
 <p>export PATH=/usr/local/share/npm/bin:$PATH 然后，安装grunt。</p>
-<p>sudo npm install -g grunt 安装bower等。</p>
-<p>sudo npm install -g bower</p>
+<pre><code>sudo npm install -g grunt</code></pre>
+<p>安装bower等。</p>
+<pre><code>sudo npm install -g bower</code></pre>
 <ul>
 <li>使用wbb生成epub、html与在线电子书示范</li>
 </ul>

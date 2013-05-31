@@ -1,5 +1,6 @@
 <!---title:pandoc安装和使用-->
 <!---keywords:mac,linux,markdown,pandoc-->
+<!---date:2013-05-31-->
 
 我们都知道markdown的格式很简单,主要是让写者可以专注文字而不是格式,但格式我们少不了,需要html pdf ppt等输出,这个时候pandoc是一个很好选择
 
@@ -16,35 +17,37 @@ haskell
 
 * 更技术的安装办法（学习Haskell者使用）
 
-一个通用的安装方式是,安装Haskell平台.然后再通过Haskell平台安装Pandoc。步骤如下：
+    一个通用的安装方式是,安装Haskell平台.然后再通过Haskell平台安装Pandoc。步骤如下：
 
     * 安装Haskell平台
 
-    如果之前，你通过其它方式，安装过Haskell的运行平台，需要卸载，Mac下命令如下：
+        如果之前，你通过其它方式，安装过Haskell的运行平台，需要卸载，Mac下命令如下：
 
-    /Library/Haskell/bin/uninstall-hs
-    然后，系统会找到你之前安装过的版本，如7.4.1、7.0.4，运行下列命令：
-    
-    sudo uninstall-hs only 7.0.4 --remove sudo uninstall-hs only 7.4.1
-    --remove
-    下载Haskell平台，下载地址是：http://hackage.haskell.org/platform/
-    
-    选择你相应的操作系统平台即可。
-    
-    然后下载完之后，一路按照默认安装即可。配置在.bashrc或者修改.zshrc文件。作者使用的是zshrc配置文件。因此，在\~/.zshrc文件末尾增加一行：
-    
-    export PATH="$HOME/Library/Haskell/bin:$PATH"
-    这样可以直接通过shell来控制Haskell。打开终端，如iterm2，输入：
-    
-    cabal update
-    cabal是类似于Ruby下的rubygems一样的包管理器。cabal程序会链接到服务器http://hackage.haskell.org/packages/archive/上下载相应的包信息。下载时间会较长，请耐心等候，并检查本机与HaskellDB服务器的连接速度。
+            /Library/Haskell/bin/uninstall-hs
+        
+        然后，系统会找到你之前安装过的版本，如7.4.1、7.0.4，运行下列命令：
+        
+            sudo uninstall-hs only 7.0.4 --remove sudo uninstall-hs only 7.4.1
+            
+        下载Haskell平台，下载地址是：http://hackage.haskell.org/platform/
+        
+        选择你相应的操作系统平台即可。
+        
+        然后下载完之后，一路按照默认安装即可。配置在.bashrc或者修改.zshrc文件。作者使用的是zshrc配置文件。因此，在\~/.zshrc文件末尾增加一行：
+        
+        export PATH="$HOME/Library/Haskell/bin:$PATH"
+        这样可以直接通过shell来控制Haskell。打开终端，如iterm2，输入：
+        
+            cabal update
+            
+        cabal是类似于Ruby下的rubygems一样的包管理器。cabal程序会链接到服务器http://hackage.haskell.org/packages/archive/上下载相应的包信息。下载时间会较长，请耐心等候，并检查本机与HaskellDB服务器的连接速度。
     
     * 安装pandoc
 
-    运行：
-    
-    cabal install pandoc
-    编译安装时间较漫长.
+        运行：
+        
+        cabal install pandoc
+        编译安装时间较漫长.
     
     
 #  Pandoc文档转换
@@ -55,10 +58,12 @@ haskell
 
 转html格式
 
-pandoc 01-chapter2.markdown -o chapter2.html -c Github.css
+    pandoc 01-chapter2.markdown -o chapter2.html -c Github.css
+    
 转word格式
 
-pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css
+    pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css
+
 ##  Markdown转PDF
 
 安装LaTex
@@ -86,10 +91,11 @@ mate ~/.zshrc
 export PATH=/usr/local/share/npm/bin:$PATH
 然后，安装grunt。
 
-sudo npm install -g grunt
+    sudo npm install -g grunt
+
 安装bower等。
 
-sudo npm install -g bower
+    sudo npm install -g bower
  
 * 使用wbb生成epub、html与在线电子书示范
 
