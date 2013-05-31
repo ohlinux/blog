@@ -12,10 +12,10 @@ PANDOC_FLAG+=" --css=%WIKI_TOPDIR%style.css" # 指名css样式文件.
 PANDOC_FLAG+=" --template=temp_pandoctpl.html" # pandoc模板.
 PANDOC_FLAG+=" --tab-stop=4"
 PANDOC_FLAG+=" --include-in-header temp_head_keywords.html" # 临时文件, 用于<head>的关键字标签.
-PANDOC_FLAG+=" --include-in-header pageframe/head_statistic.html" # 百度统计
 PANDOC_FLAG+=" --include-before-body pageframe/header.html"
 PANDOC_FLAG+=" --include-before-body temp_title.html"
 #PANDOC_FLAG+" --include-after-body pageframe/right_side.html" # 测边栏, 我目前没加, 可以预留以后放放广告啥的.
+PANDOC_FLAG+=" --include-after-body pageframe/footer_statistic.html" # 百度统计
 PANDOC_FLAG+=" --include-after-body pageframe/footer.html"
 
 # 预处理
